@@ -12,13 +12,29 @@ String googlePass = GPASS;
   
 void setup() {
     //This code happens once, right when our sketch is launched
-    size(500,500);
+    size(800,800);
     background(0);
     smooth();
-
+    
+    //Ask for a list of number
+    int[] numbers = getNumbers();
+    
+    fill(255,40);
+    noStroke();
+    
+    //draw a line from the google numbers
+    for (int i = 0; i < numbers.length; i++) {
+      ellipse(numbers[i] * 8, height/2, 8,8);
+    }
+    
+    //draw a line of real numbers for comparison
+    for (int i = 0; i < numbers.length; i++) {
+      ellipse(ceil(random(0,99)) * 8, height/2 + 20, 8, 8)
+    }
 }
 
 void draw() {
   //This code happens once every frame.
+
 }
 

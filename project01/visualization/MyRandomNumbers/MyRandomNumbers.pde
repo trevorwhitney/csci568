@@ -60,6 +60,7 @@ void barGraph( int[] nums, float y ) {
   
   //Draw the pretty bar graph
   for (int i = 0; i < counts.length; i++) {
+    fill(255, counts[i] * 30, 0);
     rect(i * 8, y, 8, -counts[i] * 10);
   }
 }

@@ -29,7 +29,7 @@ void setup() {
     
     //draw a line of real numbers for comparison
     for (int i = 0; i < numbers.length; i++) {
-      ellipse(ceil(random(0,99)) * 8, height/2 + 20, 8, 8)
+      ellipse(ceil(random(0,99)) * 8, height/2 + 20, 8, 8);
     }
 }
 

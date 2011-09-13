@@ -20,8 +20,13 @@ void setup() {
     int[] numbers = getNumbers();
     
     //Draw that graph!
-    barGraph(numbers, 400);
+    barGraph(numbers, 100);
     
+    //Draw lots of graphs
+    for(int i = 1; i < 7; i++) {
+      int[] randomNumbers = getRandomNumbers(225);
+      barGraph(randomNumbers, 100 + (i * 130));
+    }
     
     //Backwards down the numberline
     /*

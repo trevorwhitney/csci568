@@ -18,7 +18,9 @@ void setup() {
     
     //Ask for a list of number
     int[] numbers = getNumbers();
-    
+    //Draw the tapestry
+    colorGrid(numbers, 50, 50, 70);
+    /*
     //Draw that graph!
     barGraph(numbers, 100);
     
@@ -27,7 +29,7 @@ void setup() {
       int[] randomNumbers = getRandomNumbers(225);
       barGraph(randomNumbers, 100 + (i * 130));
     }
-    
+    */
     //Backwards down the numberline
     /*
     fill(255,40);
@@ -71,6 +73,30 @@ void barGraph( int[] nums, float y ) {
   }
 }
   
+void colorGrid(int[] nums, float x, float y, float s) {
+  //Make a list of number counts
+  int[] counts = new int[100];
+  //Fill it with zeros
+  for (int i = 0; i < 100; i++) {
+    counts[i] = 0;
+  }
+  //Tally it up
+  for (int i = 0; i < nums.length; i++) {
+    counts[nums[i]] ++;
+  }
+  
+  //Move drawing coordinate to the x,y position given in parameters
+  pushMatrix();
+  translate(x,y);
+  //Draw the grid
+  for (int i =0; i < counts.length; i++) {
+    colorMode(HSB);
+    fill(counts[i] * 30, 255, 255, counts[i] * 30);
+    rect((i % 10) * s, floor(i/10) * s, s, s);
+  }
+  popMatrix();
+}
+
 
 void draw() {
   //This code happens once every frame.

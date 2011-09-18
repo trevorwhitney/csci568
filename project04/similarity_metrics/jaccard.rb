@@ -18,8 +18,8 @@ class	JaccardCoefficient < SimilarityMetric
 
 		n += similarity
 		
-
 		jaccard = similarity / n
 	end
+	
 end
 

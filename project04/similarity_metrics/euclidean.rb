@@ -14,8 +14,7 @@ class EuclideanDistance < SimilarityMetric
 			@sim += dif_squared
 		end
 
-		1 / (1 + Math.sqrt(@sim))
-		
+		euc = 1 / (1 + Math.sqrt(@sim))
 	end
 
 end

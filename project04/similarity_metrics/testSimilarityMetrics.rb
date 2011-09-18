@@ -88,7 +88,6 @@ class TestSimilarityMetrics < Test::Unit::TestCase
 		assert_equal(1, @cosine1.similarity)
 		assert_equal(0, @cosine0.similarity)
 		assert_equal(0.314970394174356, @cosine.similarity)
-		
 	end
 
 end

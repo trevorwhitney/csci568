@@ -25,7 +25,6 @@ class CosineSimilarity < SimilarityMetric
 		vector2Length = Math.sqrt(vector2)
 
 		cos = dot_product / (vector1Length * vector2Length)
-		
 	end
 
 end

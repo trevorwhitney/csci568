@@ -2,6 +2,7 @@ require 'test/unit'
 require_relative	'euclidean'
 require_relative	'pearson'
 require_relative	'smc'
+require_relative	'jaccard'
 
 class TestSimilarityMetrics < Test::Unit::TestCase
 
@@ -21,10 +22,11 @@ class TestSimilarityMetrics < Test::Unit::TestCase
 							'You, Me and Dupree' => 3.5}
 
 		#Market basket data
-		@basket1 = {"Apples" => 1, "Beer" => 1, "Diapers" => 1, "Beef" => 0, "Chicken" => 0}
-		@basket1_clone = {"Apples" => 1, "Beer" => 1, "Diapers" => 1, "Beef" => 0, "Chicken" => 0}
-		@basket1_opposite = {"Apples" => 0, "Beer" => 0, "Diapers" => 0, "Beef" => 1, "Chicken" => 1}
-		@basket2 = {"Apples" => 1, "Beer" => 0, "Diapers" => 0, "Beef" => 0, "Chicken" => 1}
+		#Header: Apples, Beer, Diapers, Beef, Chicken
+		@basket1 = [1, 1, 1, 0, 0]
+		@basket1_clone = [1, 1, 1, 0, 0]
+		@basket1_opposite = [0, 0, 0, 1, 1]
+		@basket2 = [1, 0, 0, 0, 1]
 	end
 
 	def test_euclidean
@@ -49,6 +51,16 @@ class TestSimilarityMetrics < Test::Unit::TestCase
 		assert_equal(1, @pearson_normal.similarity)
 		assert_equal(-0.8, @pearson.similarity)
 		assert_equal(0.39605901719066977, @pearson_book.similarity)
+	end
+
+	def test_jaccard
+		@jaccard1 = JaccardCoefficient.new(@basket1, @basket1_clone)
+		@jaccard0 = JaccardCoefficient.new(@basket1, @basket1_opposite)
+		@jaccard = JaccardCoefficient.new(@basket1, @basket2)
+
+		assert_equal(1, @jaccard1.similarity)
+		assert_equal(0, @jaccard0.similarity)
+		assert_equal(0.25, @jaccard.similarity)
 	end
 
 	def test_smc

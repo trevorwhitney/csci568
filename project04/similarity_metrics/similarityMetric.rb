@@ -1,7 +1,6 @@
 class SimilarityMetric
-	@person1 = {}
-	@person2 = {}
-	@similarity = []
+	@person1
+	@person2
 
 	def initialize(person1, person2)
 		@person1 = person1

@@ -1,6 +1,6 @@
 require_relative 'similarityMetric'
 
-class SimpleMatchingCoefficient < SimilarityMetric
+class	JaccardCoefficient < SimilarityMetric
 
 	def similarity
 		similarity = 0.0
@@ -13,15 +13,13 @@ class SimpleMatchingCoefficient < SimilarityMetric
 				n += 1
 			elsif @person1[index] == 1 && @person2[index] == 1
 				similarity += 1
-			elsif @person1[index] == 0 && @person2[index] == 0
-				similarity += 1
 			end
 		end
 
 		n += similarity
 		
 
-		smc = similarity / n
+		jaccard = similarity / n
 	end
-
 end
+

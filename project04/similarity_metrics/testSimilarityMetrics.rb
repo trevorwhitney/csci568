@@ -3,6 +3,7 @@ require_relative	'euclidean'
 require_relative	'pearson'
 require_relative	'smc'
 require_relative	'jaccard'
+require_relative	'cosine'
 
 class TestSimilarityMetrics < Test::Unit::TestCase
 
@@ -27,6 +28,12 @@ class TestSimilarityMetrics < Test::Unit::TestCase
 		@basket1_clone = [1, 1, 1, 0, 0]
 		@basket1_opposite = [0, 0, 0, 1, 1]
 		@basket2 = [1, 0, 0, 0, 1]
+
+		#Document vectors
+		@document1 = [3, 2, 0, 5, 0, 0, 0, 2, 0, 0]
+		@document1_clone = [3, 2, 0, 5, 0, 0, 0, 2, 0, 0]
+		@empty_document = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		@document2 = [1, 0, 0, 0, 0, 0, 0, 1, 0, 2]
 	end
 
 	def test_euclidean
@@ -71,6 +78,17 @@ class TestSimilarityMetrics < Test::Unit::TestCase
 		assert_equal(1, @smc1.similarity)
 		assert_equal(0, @smc0.similarity)
 		assert_equal(0.4, @smc.similarity)
+	end
+
+	def test_cosine
+		@cosine1 = CosineSimilarity.new(@document1, @document1_clone)
+		@cosine0 = CosineSimilarity.new(@document1, @empty_document)
+		@cosine = CosineSimilarity.new(@document1, @document2)
+
+		assert_equal(1, @cosine1.similarity)
+		assert_equal(0, @cosine0.similarity)
+		assert_equal(0.314970394174356, @cosine.similarity)
+		
 	end
 
 end

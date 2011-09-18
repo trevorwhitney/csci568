@@ -1,12 +1,6 @@
-class EuclideanDistance
+require_relative 'similarityMetric'
 
-	@person1 = {}
-	@person2 = {}
-
-	def initialize(person1, person2)
-		@person1 = person1
-		@person2 = person2
-	end
+class EuclideanDistance < SimilarityMetric
 
 	def similarity
 		@similarity = @person1.keys & @person2.keys

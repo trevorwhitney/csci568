@@ -1,33 +1,8 @@
 require 'test/unit'
 require_relative	'euclidean'
+require_relative	'pearson'
 
 class TestSimilarityMetrics < Test::Unit::TestCase
-
-	MOVIES = [ "Nightmare on Elm Street",
-           "Dreamcatcher",
-           "Super Troopers",
-           "Fear and Loathing in Las Vegas",
-           "Parent Trap",
-           "Muppets Take Manhattan",
-           "Sex and the City",
-           "Revolutionary Road",
-           "Source Code",
-           "The Matrix",
-           "Hackers",
-           "Titanic",
-           "The Bounty Hunter",
-           "Valkyrie",
-           "Jarhead",
-           "Apocalypse Now",
-           "Taxi Driver",
-           "Midnight in Paris",
-           "Black Swan",
-           "Friday"
-        	]
-
-	POSSIBLE_RATINGS = (1..4).to_a
-
-	PEOPLE = %w( trevor joe steve )
 
 	def setup
 		#@ratings = generate_ratings(MOVIES, PEOPLE, POSSIBLE_RATINGS)
@@ -44,23 +19,21 @@ class TestSimilarityMetrics < Test::Unit::TestCase
 
 		assert_equal(1, @euclidean1.similarity)
 		assert_equal(0, @euclidean0.similarity)
-		assert_equal(0.5, @euclidean.similarity)
-		
+		assert_equal(1/(1 + Math.sqrt(19)), @euclidean.similarity)
 	end
 
+	def test_pearson
+		@trevor_high = {"Super Troopers" => 4, "Friday" => 3, "The Matrix" => 4}
+		@trevor_low = {"Super Troopers:" => 2, "Friday" => 1, "The Matrix" => 2}
+		@pearson1 = PearsonCorrelation.new(@trevor, @trevor_clone)
+		@pearson0 = PearsonCorrelation.new(@trevor, @trevor_dif)
+		@pearson_normal = PearsonCorrelation.new(@trevor_high, @trevor_low)
+		@pearson = PearsonCorrelation.new(@trevor, @trevor_other)
 
-	private
-
-	def generate_ratings(movies, people, possible_ratings)
-		{}.tap do |ratingset|
-    	people.each do |person|
-      	ratingset[person] = {}.tap do |ratings|
-        	movies.sort_by{ rand }.slice(0..20).each do |flick|
-          	ratings[flick] = possible_ratings[rand(possible_ratings.size)]
-          end
-      	end
-    	end
-  	end
+		assert_equal(1, @pearson1.similarity)
+		assert_equal(0, @pearson0.similarity)
+		assert_equal(1, @pearson_normal.similarity)
+		assert_equal(0.5, @pearson.similarity)
 	end
 
 end

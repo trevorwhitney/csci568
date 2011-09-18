@@ -4,7 +4,6 @@ class PearsonCorrelation < SimilarityMetric
 
 	def similarity
 		@similarity = @person1.keys & @person2.keys
-
 		if @similarity.empty?
 			return 0
 		end

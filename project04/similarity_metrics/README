@@ -1,0 +1,8 @@
+Run 'testSimilarityMetrics.rb'
+
+This file contains tests for the following 5 metrics:
+	- Euclidean distance (euclidean.rb)
+	- Simple Matching Coefficient (smc.rb)
+	- Jaccard Similarity (jaccard.rb)
+	- Pearson Correlation Coefficient (pearson.rb)
+	- Cosine Similarity (cosine.rb)

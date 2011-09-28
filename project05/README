@@ -1,0 +1,9 @@
+This is my K-Means clustering algorithm
+
+Dependencies:
+	-jruby
+Required Gems (installed for jruby):
+	-jdbc-sqlite3
+
+To run the test suite, please use the following command:
+jruby --1.9 testClusters.rb

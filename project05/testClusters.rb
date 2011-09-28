@@ -3,8 +3,9 @@ require "java"
 require "rubygems"
 require "weka/weka"
 require "jdbc/sqlite3"
+require "pry"
 
-require_relative "KMeansClusterer"
+require "kMeansClusterer"
 
 include_class "weka.clusterers.SimpleKMeans"
 include_class "weka.core.Instances"
@@ -14,7 +15,7 @@ include_class "weka.core.Attribute"
 include_class "weka.core.FastVector"
 
 
-class TestClusters << Test::Unit::TestCase
+class TestClusters < Test::Unit::TestCase
 
 	def setup
 		url = "jdbc:sqlite:data/iris.sqlite3.db"
@@ -64,8 +65,7 @@ class TestClusters << Test::Unit::TestCase
 
 		#build cluseters
 		kmeans.buildClusterer dataset
-		sizes = kmeans.clusterSizes
-		@size1, @size2, @size3 = *sizes
+		@sizes = kmeans.clusterSizes
 		@sumSSE = kmeans.getSquaredError
 
 		stmt.close
@@ -83,8 +83,42 @@ class TestClusters << Test::Unit::TestCase
 	#### Here are the tests ####
 
 	def test_cluster
-
 		clusterer = KMeansClusterer.new
+		clusterer.buildClusters(3)
+
+		centroids = clusterer.cluster_centroids
+		groups = clusterer.best_matches
+
+		puts "Centroid values: "
+		centroids.each do |centroid|
+			centroid.each do |value|
+				print "#{value} "
+			end
+			print "\n"
+		end
+
+		#binding.pry
+
+		@my_values = []
+		groups.each do |group, values|
+			puts "Group sizes: #{values.length}"
+			@my_values << values.length
+		end
+
+		@weka_values = []
+		@sizes.each do |value|
+			puts "Weka group sizes: #{value}"
+			@weka_values << value
+		end
+
+		@weka_values.sort!
+		@my_values.sort!
+
+		@my_values.each_index do |i|
+			assert((@weka_values[i]-2..@weka_values[i]+2).to_a.include? @my_values[i])
+		end
+
+		
 		
 	end
 

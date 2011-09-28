@@ -34,6 +34,9 @@ end
 
  num = count.getInt(1)
 
+ puts "Row 0: #{rows.getRow(0).getFloat(1)}"
+ puts "Row 1: #{rows.getRow(0).getFloat(1)}"
+ 
 # create the model
 kmeans = SimpleKMeans.new
 # specify some parameters

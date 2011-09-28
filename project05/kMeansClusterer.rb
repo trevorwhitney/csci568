@@ -50,6 +50,9 @@ class KMeansClusterer
  		#for max iterations, go through and cluster
  		for t in 0..100
  			#TODO: run the actual cluster
+
+ 			#reset data object
+ 			@data.first
  		end
 
  			
@@ -62,7 +65,9 @@ class KMeansClusterer
 			@distance += dif_squared
 		end
 
+		#we want lower numbers to mean closer
 		euc = 1 / (1 + Math.sqrt(@sim))
+		return 1 - euc
  	end
 
 end

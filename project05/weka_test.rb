@@ -77,18 +77,29 @@ kmeans.buildClusterer dataset
 
 #puts "Current number of clusters: #{kmeans.getNumClusters}\n"
 
+#get some info
+kmeans.getClusterCentroids.enumerateInstances.each do |cluster|
+	puts cluster.toString
+end
+puts "Cluster Squared Error: #{kmeans.getSquaredError}"
+print "Cluster Sizes: "
+kmeans.getClusterSizes.each do |size|
+	print "#{size}\t"
+end
+print "\n"
+
 # print out the built model
 print kmeans
 
 # Display the cluster for each instance
-dataset.numInstances.times do |i|
-  cluster = "UNKNOWN"
-  begin
-    cluster = kmeans.clusterInstance(dataset.instance(i))
-  rescue java.lang.Exception
-  end
-  puts "#{dataset.instance(i)}, #{cluster}"
-end
+#dataset.numInstances.times do |i|
+#  cluster = "UNKNOWN"
+#  begin
+#    cluster = kmeans.clusterInstance(dataset.instance(i))
+#  rescue java.lang.Exception
+#  end
+#  puts "#{dataset.instance(i)}, #{cluster}"
+#end
 
 stmt.close
 db.close 

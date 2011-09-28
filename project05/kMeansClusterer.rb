@@ -32,6 +32,7 @@ class KMeansClusterer
  	end
 
  	def buildClusters(num_clusters)
+ 		@num_clusters = num_clusters
  		num_attributes = @data[0].length
 
  		#find bounds of data
@@ -118,6 +119,20 @@ class KMeansClusterer
 		#we want lower numbers to mean closer
 		euc = 1 / (1 + Math.sqrt(@distance))
 		return 1 - euc
+ 	end
+
+ 	def getSSE
+ 		#sum of distance from record to centroid for each cluster
+ 		@sse = [0.0]*@num_clusters
+ 		@best_matches.each do |cluster, values|
+ 			if values.length > 0
+ 				values.each do |row|
+ 					@sse[cluster] += euclideanDistance(@cluster_centroids[cluster], @data[row])
+ 				end
+ 			end
+ 		end
+
+ 		@sse
  	end
 
 end

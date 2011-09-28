@@ -37,7 +37,7 @@ class TestClusters < Test::Unit::TestCase
 		kmeans = SimpleKMeans.new
 
 		# specify cluster parameters
-		new_options = Utils.splitOptions("-N 3")
+		new_options = Utils.splitOptions("-N 3 -I 100 -S 10")
 		kmeans.setOptions(new_options)
 
 		#define attributes
@@ -101,7 +101,7 @@ class TestClusters < Test::Unit::TestCase
 
 		@my_values = []
 		groups.each do |group, values|
-			puts "Group sizes: #{values.length}"
+			puts "My group sizes: #{values.length}"
 			@my_values << values.length
 		end
 
@@ -111,14 +111,18 @@ class TestClusters < Test::Unit::TestCase
 			@weka_values << value
 		end
 
+		@sse = clusterer.getSSE
+		puts "Sum of Squared Error by Cluster:"
+		@sse.each_index do |i|
+			puts "Cluster #{i}: #{@sse[i]}"
+		end
+
 		@weka_values.sort!
 		@my_values.sort!
 
 		@my_values.each_index do |i|
 			assert((@weka_values[i]-2..@weka_values[i]+2).to_a.include? @my_values[i])
 		end
-
-		
 		
 	end
 

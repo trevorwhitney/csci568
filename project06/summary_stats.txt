@@ -1,0 +1,25 @@
+Number of Winners: 213
+Number of Losers: 85
+Total records: 298
+
+Percent Winners: 71%
+Percent Losers: 29%
+
+Possible Attributes:
+	-# of characters in first name
+	-# of characters in last name
+	-# of characters total in name
+	-What the first name begins with
+	-What the last name begins with
+	-# of vowels in first name
+	-# of vowels in last name
+	-# of vowels total in name
+	-Treat letters as values 1-26
+		-Sum of first name
+		-Sum of last name
+		-Sum of whole name
+		-Does first letter of first name come before/after first letter of last name
+		-Does last letter of first name come before/after first letter of last name
+		-Does first letter of first name come before/after last letter of last name
+		-Does last letter of first name come before/after last letter of last name
+		-Numeric distance between certain letters

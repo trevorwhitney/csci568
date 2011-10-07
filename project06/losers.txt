@@ -1,0 +1,85 @@
+Ed Pednault
+Arlindo Oliveira
+Irina Tchoumatchenko
+Thomas E. Kammeyer
+R. Andrew McCallum
+Bhaskar Dasgupta
+Wray Buntine
+Chris Drummond
+Claude Sammut
+Charles X. Ling
+Stefan Kramer
+Cristina Baroglio
+Philip Chan
+Attilio Giordana
+Thomas Zeugmann
+Shaul Markovitch
+Eric Allender
+Bruce A. MacDonald
+Craig Knoblock
+Prasad Tadepalli
+Stan Matwin
+Stephen Kwek
+J. R. Quinlan
+Priscilla Rasmussen
+Steven Minton
+Claudio Facchinetti
+Shai Ben-David
+Anselm Blumer
+Steven W. Norton
+R. Bharat Rao
+J. Jeffrey Mahoney
+Thomas G. Dietterich
+Phil Long
+Krishnan Pillaipakkamnatt
+Usama Fayyad
+Grigoris Karakoulas
+Drago Indjic
+Frank Stephan
+Claire Cardie
+Andrey Burago
+Eddy Mayoraz
+Lyle H. Ungar
+Thomas Wengerek
+Steven Salzberg
+Chris Darken
+Oded Maron
+Chun-Nan Hsu
+Jyrki Kivinen
+Steve A. Chien
+Stephen Muggleton
+Sreerama K. Murthy
+Emanuel Knill
+Sholom Weiss
+Thomas G. Spalthoff
+Olivier De Vel
+Brian D. Davidson
+Brian Tester
+Michael Scott
+Clare Bates Congdon
+Klaus P. Jantke
+Bradley L. Whitehall
+Sridhar Mahadevan
+Craig Nevill-Manning
+Myriam Abramson
+Glenn Silverstein
+Avrim Blum
+Scott E. Decatur
+Chidanand Apte
+Zhixiang Chen
+Eric Baum
+Arun Sharma
+Thomas Ellman
+Alexander M. Meystel
+Eyal Kushilevitz
+Ameur Foued
+Antoine Cornuejols
+Alma Whitten
+L. Thorne McCarty
+Chen K. Tham
+Steffen Lange
+Andrew W. Moore
+Armand Prieditis
+Stuart Russell
+Andrew Y. Ng
+Efim Kinber

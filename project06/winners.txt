@@ -1,0 +1,213 @@
+Neela Khan
+Bir Bhanu
+Robert C. Holte
+Michele Sebag
+Jorg-Uwe Kietz
+Yoshifumi Sakai
+Yoav Freund
+Jonathan Gratch
+Margo Guertin
+Huw Roberts
+Sally Goldman
+Fernando Pereira
+Nina Mishra
+William A. Greene
+Yolanda Gil
+Sanjay Jain
+Dwight Schrute
+Leslie Pack Kaelbling
+Yishay Mansour
+Michael I. Jordan
+Patrick M. Murphy
+Karsten Verbeurgt
+Gerald F. DeJong
+Mandayam T. Suraj
+Michael Littman
+Cullen Schaffer
+Roberto Piola
+Nader Bshouty
+Kamal M. Ali
+Foster J. Provost
+Wolfgang Janko
+Seth Flanders
+Peter Bartlett
+Earl S. Harris Jr.
+Pascal Koiran
+Sandra Panizza
+George Berg
+Sebastian Seung
+Susan L. Epstein
+Lance Riley
+Jose L. Balcazar
+William Sakas
+Vijay Raghavan
+Bob Evans
+Neil Berkman
+Masayuki Inaba
+Dan Roth
+Lisa Hellerstein
+Geoffrey Gordon
+Paul Vitanyi
+Jeff Jackson
+Matthias Heger
+Nicolo Cesa-Bianchi
+David Montgomery
+Patricia J. Riddle
+Kazushi Ikeda
+Pang-Chieh Chen
+Paul Utgoff
+Joseph O'Sullivan
+Toshiyasu Matsushima
+Timothy P. Barber
+Tal Grossman
+Donna Slonim
+Tatsuo Unemi
+Lorenza Saitta
+Jude Shavlik
+David Helmbold
+Tom Hancock
+Gary Weiss
+Kenji Yamanishi
+Wan P. Chiang
+Yoram Singer
+Melinda T. Gervasio
+Kate Goelz
+Roni Khardon
+Nikolay Nikolaev
+George H. John
+Diana Gordon
+Moshe Koppel
+Andy Bernard
+Marcos Salganicoff
+David W. Opitz
+Mark Changizi
+Lars Asker
+Dana Ron
+Mark Schwabacher
+Carl H. Smith
+Wee Sun Lee
+Mario Marchand
+David Pierce
+Dan Oblinger
+Hiroshi Tanaka
+Johanne Morin
+Mark W. Craven
+Tom Fawcett
+John R. Rose
+Richard A. Caruana
+Barak A. Pearlmutter
+Judy A. Franklin
+Xuemei Wang
+Nitin Indurkhya
+Takefumi Yamazaki
+Satinder Pal Singh
+Ron Kohavi
+Michael de la Maza
+Robert Sloan
+Daniel Kortenkamp
+Ricard Gavalda
+Joe Suzuki
+James S. Royer
+Tapio Elomaa
+Michael Redmond
+Rich Maclin
+Jiarong Hong
+Janusz Wnek
+David B. Skalak
+Daniel Hennessy
+David Cohn
+Merrick L. Furst
+Lindley Darden
+Wai Lam
+Paul W. Goldberg
+Jason Catlett
+Justinian Rosca
+Richard S. Sutton
+Michael W. Barley
+Leslie Grate
+Nathalie Japkowicz
+Randolph Jones
+John Rachlin
+Moshe Leshno
+Darko Zupanic
+Michael Kearns
+Holly Yanco
+Tom Bylander
+Johannes Furnkranz
+Pat Langley
+Javed Aslam
+Jean Gabriel Ganascia
+Sean Slattery
+Michael A. meystel
+David Gillman
+Matevz Kovacic
+Bala Kalyanasundaram
+Martin Kummer
+Manfred Warmuth
+David Mathias
+Nicolas Fiechter
+Aurora Perez
+Naoki Abe
+Kimmen Sjolander
+Jeffery Clouse
+Robert P. Daley
+William Gasarch
+Reinhard Blasig
+Malini Bhandaru
+Robert Schapire
+Gary M. Selzer
+Martinch Krikis
+John Case
+Lance Fortnow
+Lorien Y. Pratt
+Haralabos Athanassiou
+Paul Fischer
+Hal Duncan
+Von-Wun Soo
+Bill Byrne
+Creed Bratton
+Minoru Asada
+Tom M. Mitchell
+Jean-Daniel Zucker
+Sonya Snedecor
+Dana Angluin
+Wolfgang Maass
+Marko Grobelnik
+Mary Soon Lee
+Mona Singh
+Justin Boyan
+Daniel L. Silver
+David W. Aha
+Robert S. Roos
+David Loewenstern
+John M. Zelle
+Ronitt Rubinfeld
+Aaron Feigelson
+Harris Drucker
+Carla E. Brodley
+Maja Mataric
+Leonard Pitt
+Long-Ji Lin
+Welton Becket
+Haym Hirsh
+Hiroshi Motoda
+John Fischer
+George A. Drastal
+William Cohen
+Jing Peng
+David Haussler
+Joel Ratsaby
+Kan Deng
+Russell Greiner
+Dunja Mladenic
+Jong-Hoon Oh
+Ken Lang
+Bernhard Pfahringer
+Ronald L. Rivest
+Robert Williamson
+David Finton
+Mark Staley
+Filippo Neri
+Jonathan Hodgson
+Dennis F. Kibler
+Michael J. Donahue

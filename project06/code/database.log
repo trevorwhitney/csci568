@@ -1,0 +1,55 @@
+D, [2011-10-05T22:22:56.187609 #13070] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-10-05T22:22:56.187699 #13070]  INFO -- : Migrating to CreateNames (1)
+D, [2011-10-05T22:22:56.187805 #13070] DEBUG -- :   [1m[35m (0.0ms)[0m  select sqlite_version(*)
+D, [2011-10-05T22:22:56.193957 #13070] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mCREATE TABLE "names" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "winner" integer, "firstNameCharCount" integer, "lastNameCharCount" integer, "nameCharCount" integer, "firstNameFirstChar" varchar(255), "firstNameLastChar" varchar(255), "lastNameFirstChar" varchar(255), "lastNameLastChar" varchar(255), "firstNameVowelCount" integer, "lastNameVowelCount" integer, "nameVowelCount" integer) [0m
+D, [2011-10-05T22:22:56.194607 #13070] DEBUG -- :   [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('1')
+D, [2011-10-05T22:45:36.468666 #13236] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-10-05T22:45:36.468755 #13236]  INFO -- : Migrating to CreateNames (1)
+I, [2011-10-05T22:45:36.468782 #13236]  INFO -- : Migrating to AddMiddleNameToNames (2)
+D, [2011-10-05T22:45:36.468890 #13236] DEBUG -- :   [1m[35m (0.0ms)[0m  select sqlite_version(*)
+D, [2011-10-05T22:45:54.927481 #13238] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-10-05T22:45:54.927578 #13238]  INFO -- : Migrating to CreateNames (1)
+I, [2011-10-05T22:45:54.927606 #13238]  INFO -- : Migrating to AddMiddleNameToNames (2)
+D, [2011-10-05T22:45:54.927713 #13238] DEBUG -- :   [1m[35m (0.0ms)[0m  select sqlite_version(*)
+D, [2011-10-05T22:45:54.932324 #13238] DEBUG -- :   [1m[36m (1.1ms)[0m  [1mALTER TABLE "names" ADD "middleNameCharCount" integer[0m
+D, [2011-10-05T22:45:54.932891 #13238] DEBUG -- :   [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('2')
+D, [2011-10-05T23:12:25.605000 #13307] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-10-05T23:12:25.605095 #13307]  INFO -- : Migrating to CreateNames (1)
+I, [2011-10-05T23:12:25.605122 #13307]  INFO -- : Migrating to AddMiddleNameToNames (2)
+I, [2011-10-05T23:12:25.605143 #13307]  INFO -- : Migrating to AddMoreMiddleToNames (3)
+D, [2011-10-05T23:12:25.605244 #13307] DEBUG -- :   [1m[35m (0.0ms)[0m  select sqlite_version(*)
+D, [2011-10-05T23:12:25.610351 #13307] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mALTER TABLE "names" ADD "middleNameFirstChar" varchar(255)[0m
+D, [2011-10-05T23:12:25.610953 #13307] DEBUG -- :   [1m[35m (0.4ms)[0m  ALTER TABLE "names" ADD "middleNameLastChar" varchar(255)
+D, [2011-10-05T23:12:25.611237 #13307] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mALTER TABLE "names" ADD "middleNameVowelCount" integer[0m
+D, [2011-10-05T23:12:25.611991 #13307] DEBUG -- :   [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('3')
+D, [2011-10-06T18:11:51.257771 #9236] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-10-06T18:11:51.257874 #9236]  INFO -- : Migrating to CreateNames (1)
+I, [2011-10-06T18:11:51.257902 #9236]  INFO -- : Migrating to AddMiddleNameToNames (2)
+I, [2011-10-06T18:11:51.257924 #9236]  INFO -- : Migrating to AddMoreMiddleToNames (3)
+I, [2011-10-06T18:11:51.257944 #9236]  INFO -- : Migrating to AddLabelToNames (4)
+D, [2011-10-06T18:11:51.258045 #9236] DEBUG -- :   [1m[35m (0.0ms)[0m  select sqlite_version(*)
+D, [2011-10-06T18:11:51.263405 #9236] DEBUG -- :   [1m[36m (1.9ms)[0m  [1mALTER TABLE "names" ADD "label" varchar(255)[0m
+D, [2011-10-06T18:11:51.264237 #9236] DEBUG -- :   [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('4')
+D, [2011-10-06T18:14:58.428812 #9255] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-10-06T18:14:58.428914 #9255]  INFO -- : Migrating to CreateNames (1)
+I, [2011-10-06T18:14:58.428943 #9255]  INFO -- : Migrating to AddMiddleNameToNames (2)
+I, [2011-10-06T18:14:58.428966 #9255]  INFO -- : Migrating to AddMoreMiddleToNames (3)
+I, [2011-10-06T18:14:58.428988 #9255]  INFO -- : Migrating to AddLabelToNames (4)
+D, [2011-10-06T18:16:03.761521 #9258] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-10-06T18:16:03.761618 #9258]  INFO -- : Migrating to CreateNames (1)
+I, [2011-10-06T18:16:03.761645 #9258]  INFO -- : Migrating to AddMiddleNameToNames (2)
+I, [2011-10-06T18:16:03.761667 #9258]  INFO -- : Migrating to AddMoreMiddleToNames (3)
+I, [2011-10-06T18:16:03.761688 #9258]  INFO -- : Migrating to AddLabelToNames (4)
+D, [2011-10-06T18:16:06.812839 #9260] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-10-06T18:16:06.812938 #9260]  INFO -- : Migrating to CreateNames (1)
+I, [2011-10-06T18:16:06.812965 #9260]  INFO -- : Migrating to AddMiddleNameToNames (2)
+I, [2011-10-06T18:16:06.812986 #9260]  INFO -- : Migrating to AddMoreMiddleToNames (3)
+I, [2011-10-06T18:16:06.813006 #9260]  INFO -- : Migrating to AddLabelToNames (4)
+D, [2011-10-06T21:03:12.915592 #12744] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+D, [2011-10-06T21:03:12.919019 #12744] DEBUG -- :   [1m[35m (3.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+D, [2011-10-06T21:03:12.919283 #12744] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+D, [2011-10-06T21:03:12.922511 #12744] DEBUG -- :   [1m[35m (3.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2011-10-06T21:03:12.926395 #12744] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-10-06T21:03:12.926502 #12744]  INFO -- : Migrating to CreateNames (1)
+D, [2011-10-06T21:03:12.988321 #12744] DEBUG -- :   [1m[35m (48.9ms)[0m  CREATE TABLE "names" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "secondLetterVowel" integer, "label" varchar(255)) 
+D, [2011-10-06T21:03:12.989289 #12744] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('1')[0m

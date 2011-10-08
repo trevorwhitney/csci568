@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>The Data Mining Process, What's In A Name?</TITLE>
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		body {
+			background: url('bg.png');
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		P { margin-bottom: 0.08in }
+		.title {
+			width: 500px;
+			text-align: center;
+			margin: 0 auto 30px;
+		}
+		.tree {
+			margin: 10px auto;
+			width: 495px;
+		}
+		.content {
+			width: 970px;
+			margin: 3px auto;
+			background: #FFF;
+			border-radius: 5px;
+			box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+			padding: 5px 20px;
+		}
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<div class="content">
+<h1 class="title">The Data Mining Process</h1>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in">	Like any good data miner, I
+started by watching <I>The Office</I>. Unfortunately, the episode
+“The List” did not help me figure out the winners and losers in
+our dataset, since Dwight, Oscar, Andy, Phyllis, Angela, Gabe, Kelly,
+Pam, and Meredith were all misclassified. Guess this was going to be
+a little harder than watching TV. Below is my story of how I solved
+Project 6: “What's in a Name?”. My process began with summary
+statistics, digressed into a few hours of chasing irrelevant
+features and wrestling with data mining tools, and finished when I
+discovered the pattern using the simplest of tools, a text editor.
+Finally, my story concludes in the devastating discovery that I,
+Trevor Whitney, am a loser.</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in">	We were given a list of
+names, with labels. 213 of these names were winners, while 85 were
+losers. My first step was to extract this information from the set.
+Maybe the distribution of classes could tell me something about the
+data? For example, if there were only 10  out of 295 names that were
+losers, that would be a pretty easy set to manually examine for
+patterns. Since the data was in a SQLite database, the first tool I
+used was a SQLite console. I ran a couple queries, such as <code>select
+count(id) from people where label == " + "</code>, and again where label was “
+- ” to get some summary statistics about my class distribution. I
+found that 213, or 71% of my data were winners, while 85, or 29% were
+losers. While there was a considerable skew towards winners, 85 was
+still more records than I could go through manually, so I would need
+to extract features from these names and run them through a
+classifier to find my pattern.</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in">	Next I brainstormed some
+features I could pull from these names. I limited my scope to
+features that could easily be obtained programmatically, since we
+were instructed to write scripts to extract these features. So, for
+example, I did not try to figure out if the name rhymed with
+anything, since this would be rather hard to teach a computer to do
+in a quick “script”. Instead I focused on things like counting
+the characters in the first and last name, extracting the first and
+last character from each name, and so on. The features I pulled out
+were:</P>
+<UL>
+	<li>Character count of each name: first, last, and middle if available.</li>
+	<li>Character count for the entire name.</li>
+	<li>First and last character of each name: first, last, and middle if available.</li>
+	<li>Vowel count for each name: first, last, and middle if available.</li>
+	<li>Vowel count for the entire name.</li>
+</UL>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in">	I put all these values into
+WEKA and ran it through a J48 Decision Tree Classifier. My best
+result with this data was an 86% accurate classification rate.
+However, my tree was very wide, and very tall. Because of the shape
+of my tree, and because I knew the data could be correctly classified
+at a rate of about 98%, it was time to rethink my process.</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in">	At this point I was
+baffled, and a little tired. I had no idea what the pattern could be.
+The problem with the attributes I had generated was that I had been
+thinking about general attributes. In other words, I was extracting
+attributes you could pull from any word, such as length, first and
+last characters, and vowel count. I needed to focus on the particular
+words in our dataset, on my particular domain. To do this I went back
+to my SQLite console and ran two simple queries to give me all the
+winners and all the losers, which I put in two separate text files. I
+loaded these files side by side in my text editor, and started to
+compare them. I had a few hypotheses, that I tested on small sets,
+and most of them failed. Then, suddenly, I saw it! All the names on
+the right had a vowel after the first letter in the first name. I
+scanned through the list, and while this wasn't true in all cases, it
+was true in most of them. Same on the left, while not true in all
+cases, most of the names had a consonant after the first letter.
+Since I knew there was some noise purposefully put into the data set,
+I went about testing my hypothesis. I created a new column in the
+database called “secondLetterVowel”, and populated it with a 1 if
+the name had a vowel as the second letter of the first name, and a 0
+if it did not. I plugged my results into WEKA, ran it through a J48
+Classification Tree, and generated the following output:</P>
+<div class="tree">
+	<img src="tree.png" />
+</div>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in">	Viola! I found the
+solution! Sure there were still a couple instances of noise that
+prevented this from being a perfect classification, but the above
+tree correctly classified 98% of the data. From this process, I
+learned a few things about data mining. First of all, it's really
+important to know your data and it's domain. My first attempt failed
+because I was just creating general attributes, that could apply to
+any word. I needed to focus on the words in this particular dataset.
+Furthermore, I learned that, at least in this case, the best tools
+for exploring my data where SQL queries and a text editor. WEKA was
+useful in proving my hypothesis, and more importantly to show me the
+unimportance of all the features I extracted in my first attempt.
+However, a good visualization of my data, which in this case was a
+couple of text files showing the different classes of text data I
+had, was my most valuable tool. So in conclusion, exploring and
+understanding your data is often the most important part of data
+mining. That, and I'm a loser.</P>
+</content>
+</BODY>
+</HTML>

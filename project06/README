@@ -1,5 +1,7 @@
 This folder contains my results from parsing the data, as well as my paper summarizing my process and findings.
 
+Please read "results.html" for a summary of my process and results.
+
 If you would like to see the scripts I used to parse the code, they are in the "code" directory. The "parse.rb" is the meat of it, while "parse_first.rb" was my first attempt (which failed).
 
 The data from the first parse is in "names.csv" and "names.arff", and the data from the second (sucessful) attempt is in "names2.csv".

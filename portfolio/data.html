@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="LibreOffice 3.4  (Unix)">
+	<META NAME="AUTHOR" CONTENT="Trevor Whitney">
+	<META NAME="CREATED" CONTENT="20111002;19130900">
+	<META NAME="CHANGEDBY" CONTENT="Trevor Whitney">
+	<META NAME="CHANGED" CONTENT="20111026;18334500">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.08in }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<P ALIGN=CENTER STYLE="margin-bottom: 0in">Data and Data Quality</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in">	All data mining must begin
+at the same point: data. Just like any “mining” procedure, you
+first need a mine. However, unlike typical mining in rocks, we, or
+other humans, are the creators of this data. This data comes with
+specific data-set  and attribute types, and will usually be in one of
+a few commonly excepted formats. Since we are the creators of our
+data, any impurities, inconsistencies, or general errors that are in
+are data-sets are often our fault. Sometimes directly, and sometimes
+indirectly as the result of poor planning, and poor data gathering
+procedures. Most of the time however, even when necessary precautions
+are taken, data will be “imperfect”. The first step to data
+mining is the understanding of these common imperfections, and how
+they should best be handled. Data mining is all about finding
+patterns, but finding different patterns require different
+algorithms. Since these algorithms are not always immediately known,
+it is important to first look at summary statistics. It may also be
+important to look at a visual representation of the data, as it may
+be easier to locate patterns in images versus tables of numbers. The
+visualization, however, is often more relevant after the mining
+process, to illustrate the patterns found in the data. In the
+following paragraphs, I will further explain these fundamental
+aspects of data, and data quality, which are the foundations of data
+mining.</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in">	Data can come in many
+forms, and thus there are multiple types of data-sets to handle
+different types and domains of data. Three common types of data are
+record, graph-based, and sequential data. In a record based data-set,
+each individual data instance represents a record. For example, this
+could be a record of things purchased, or a record made up of
+biographical information in a human resources databases. The
+prevalence of relational databases makes record data very familiar to
+us. In a relational database, each row of a table could be considered
+a record, and thus the data stored in such databases is often
+record-based data. Another common type of data is graph-based data,
+which is great for displaying data objects with structure. As Tan,
+Steinbach, and Kumar point out, “If objects have structure, that
+is, the objects contain sub-objects that have relationships, then
+such objects are frequently represented as graphs.” (DM, 32)
+Graph-based data is also relational, or at least associative, and
+associations are represented as edges between nodes in the graph. For
+example, a data-set of airports would want to keep track of the
+distance, and time it took to fly from one airport to any other
+destination in the network. These associations would be represented
+as edges that were weighted according to this time and distance.
+Finally, data that is captured over time is a great example of the
+third type of data, sequential data. Sequential data happens in
+sequence, so it is important to maintain the order of the data. For
+example, time-based data may be stored in a linked list, or in a
+relational database with a time stamp associated with each recorded
+data instance. With this type of data, temporal correlation needs to
+be taken into account. For example, if two items are really similar,
+but they happened only 1 second apart, that it probably not a
+meaningful clustering. Data-sets are made up of attributes, of which
+there are also many types. Attributes can be nominal, ordinal, an
+interval, or a ratio. Attributes explain different things, and may be
+either qualitative or quantitative. They can also be discrete or
+continuous. If an attribute is in the set of all real numbers, it is
+continuous. If an attribute has a “finite or countably infinite set
+of values” (DM, 28), it is discrete. Because of all these different
+data-sets, consisting of different types of data and attributes, it
+is important to know your data and pick appropriate data mining
+methods and metrics.</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in">--Need side effects of data
+types: graph and record</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in">	While understanding the
+type of data you are working with and mining it using appropriate
+methods will generate better results, the quality of your results
+will always be influenced by the quality of the data you start with.
+High data quality means data that is free of measurement and data
+collection errors. It means data that is not missing data, does not
+contain much noise, artifacts, or duplicates. It may also mean data
+free or outliers, although is some cases like network intrusion
+detection, outliers are actually an important part of the data. If
+you are collecting data, it is very important to make concerted
+efforts to maintain a high data quality. This is especially important
+when collecting human-generated data. When collecting data from
+humans, it is paramount to instill trust in the participants. Follett
+and Holm emphasize that good data collection must “establish trust
+with the respondents and indicate that this was a legitimate survey,
+not a phishing expedition.” (BD, 28) If trust is not established
+with the respondent, their answers will not be reliable. It is also
+important to adequately persuade a respondent to participate in a
+study, without being persuasive <I>during</I><SPAN STYLE="font-style: normal">
+the study, as that may effect responses. As Follett and Holm point
+out, “You can't use persuasive techniques during the act of data
+collection, but you </SPAN><I>do</I><SPAN STYLE="font-style: normal">
+need to persuade your respondents to participate in the first place.”
+(BD, 30) A good way to make respondents want to participate in the
+first place is to not ask too much of them. Steve Krug emphasizes the
+importance of not making respondents have to think to much (Krug,
+Don't Make Me Think), while Follet and Holm remind data collectors
+not to “ask the user to do what you can do—or discover—on your
+own.” (BD, 29) In other words, make surveys short and simple to
+ensure that respondents will be willing to both start and finish
+them.</SPAN></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><SPAN STYLE="font-style: normal">	Unfortunately,
+however, data miners usually do not have the luxury of collecting
+their own data. Furthermore, the data collected for a study is often
+collected from other collection efforts that did not have the current
+study in mind. Therefore, data will inevitably be imperfect, which is
+what leads Tan, Steinbach, and Kumar to conclude that “Data is of
+high quality if it is suitable of its intended use.” (DM, 43) There
+are many ways you can massage, or fix data, to make it suitable for
+your intended use. Missing data can be ignored, replaced with the
+mean or median for that field, or records with missing fields can be
+omitted. Duplicates can be parsed out and deleted from the set.
+Different mining techniques and algorithms are more or less
+susceptible to noise and artifacts, so if your data is rife with
+these, close attention must be paid to the selection of an algorithm.
+As is usually the case in data mining, the selection of algorithms
+and pruning techniques to make data suitable for it's intended use
+will require knowledge of the data, the problems with it's quality,
+and often knowledge of it's domain.</SPAN></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><SPAN STYLE="font-style: normal">	Since
+knowing your data is so important in order to set up your mining
+operation, it is essential to explore the data before mining it.
+Exploring the data could be as simple as looking over the Excel
+spreadsheet or CSV file it came in, however such a simple approach is
+only practical with small data-sets. With larger data-sets, it is
+important to extract summary statistics from the data. These include
+minimum and maximum values, mean value, median value, standard
+deviation, variance, and the sum of values for each field in your
+data-set. Most widely available data mining tools, such as Weka or
+Knime, have this functionality built in and make it easy to explore
+your data.</SPAN></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><SPAN STYLE="font-style: normal">---Screen
+shots of Knime and Weka summary stats.</SPAN></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><SPAN STYLE="font-style: normal">	If
+your data-set is large, however, looking at a bunch of numbers may
+not be helpful in deciphering patterns. The human eye is much more
+used to finding visual patterns in images, which is why
+visualization, both in the exploration stage, and in the display of
+results, is another very important aspect to data-mining. Data is
+often easily represented in a graph, such as the summary statistics
+shown above in the screenshot from Weka. This is a good example of
+using data visualization in the exploration phase. Data can be
+represented in many other ways besides graphs, and a good
+visualization can often demonstrate a pattern found in data much
+faster than words. For example, look at the image below I generated
+from a Java-based data visualization tool called Processing. This
+image took input data from 225 people submitting random numbers in
+response to a twitter post. By laying out the numbers in a grid, and
+coloring them based on their frequency, a few patterns become
+immediately apparent.</SPAN></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><SPAN STYLE="font-style: normal">---Processing
+image</SPAN></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><SPAN STYLE="font-style: normal">	Look
+at the column of numbers containing a 7 in the ones place. From this
+pattern, one could guess that the top 10 “random” numbers between
+1 and 99 that people tend to “generate” all have a 7 in the ones
+place. Perhaps its the effect of the probability of getting 7 with a
+pair of 6 sided dice, but there is clearly some subconscious
+preference for the number 7. This pattern is immediately noticeable
+when displayed in this manner, while it may have been missed in a
+table of numbers, or slightly less noticeable in a bar graph.
+Furthermore, this visualization can be understood just as easy by a
+layperson as by the data miner. This highlights the importance of
+data visualization. Visualization makes patterns discovered through
+data mining easier to discover and understand for people of all
+technical and mathematical backgrounds.</SPAN></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><SPAN STYLE="font-style: normal">---Tufte
+quote?</SPAN></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><SPAN STYLE="font-style: normal">	I
+hope this exposition shined some light on the many interesting
+factors that go into successfully mining data for interesting
+patterns. There are many types of data, and data-sets will include
+different attributes. Understanding your data, it's domain, and
+composition of the data-set is essential for picking appropriate
+data-mining techniques. Data quality is often the most important
+factor to determining accurate and useful results. Sometimes we get
+to collect our own data, and in those cases we should follow certain
+guidelines to assure accurate and complete data collection,
+particularly when gathering human-generated data. Unfortunately, we
+don't always get the luxury of personally collecting the data we wish
+to mine. In these cases, it is important to prune and massage the
+data to assure accurate results. Just like picking the right
+data-mining techniques and algorithms, pruning again requires
+knowledge of the data-set to understand which techniques will work
+best. Successful data mining mandates a good understanding of the
+data-set, which is why every mining operation should begin with an
+exploration of the data. In conclusion, high quality and properly
+understood data is the foundation upon which all successful data
+mining stands.</SPAN></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in"><SPAN STYLE="font-style: normal">	</SPAN></P>
+</BODY>
+</HTML>

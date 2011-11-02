@@ -1,0 +1,31 @@
+ANN Outline:
+
+Objects:
+	Network
+		-has layers, in specific order (array, 0 is input, size-1 is output)
+		-accepts input -> directs to input layer
+			-order is important
+		-produces output -> from nodes in output layer
+		-has train method, which calls backpropogate method
+
+	Neuron
+		-has sigmund function?
+		-connects to other neurons, has weights on connections (graph? linked list?)
+		-belongs to a layer -> has an order
+		-accepts input
+		-produces output
+
+	Layer
+		-has neurons -> in specific order (array)
+		-has a level (input, output, hidden) -> set by order in network array
+		-belongs to a network
+
+
+General procedure:
+	-Initialize network with 3 layers (3 neurons, 2 nuerons, 3 nuerons) -> store in an array
+		-Randomize weights between neurons with values between -1 and 1
+	-Pass input values into network
+	-Product output
+	-Until output is correct:
+		-Train network
+		-Produce Output

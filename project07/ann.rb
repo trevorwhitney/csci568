@@ -75,7 +75,7 @@ class ArtificialNeuralNetwork
 		@output = @hidden
 	end
 
-	def train
+	def train(desired_output)
 	end
 
 	def backpropogate

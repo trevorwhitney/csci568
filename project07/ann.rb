@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'pry'
 require_relative 'layer.rb'
 

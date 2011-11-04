@@ -2,7 +2,7 @@ ANN Outline:
 
 Objects:
 	Network
-		-has layers, in specific order (array, 0 is input, size-1 is output)
+		-has layers, in specific order (array, 0 is input, size-1 is output) -- [array]
 		-accepts input -> directs to input layer
 			-order is important
 		-produces output -> from nodes in output layer
@@ -10,13 +10,16 @@ Objects:
 
 	Neuron
 		-has sigmund function?
-		-connects to other neurons, has weights on connections (graph? linked list?)
+		-tansig function
+		-connects to other neurons, has weights on connections -- [array]
+			-store in array, based on order of layer, left to right
 		-belongs to a layer -> has an order
 		-accepts input
+			-input is equal to the output of previous neuron times the hidden-weight of that connection
 		-produces output
 
 	Layer
-		-has neurons -> in specific order (array)
+		-has neurons -> in specific order -- [array]
 		-has a level (input, output, hidden) -> set by order in network array
 		-belongs to a network
 
@@ -25,7 +28,18 @@ General procedure:
 	-Initialize network with 3 layers (3 neurons, 2 nuerons, 3 nuerons) -> store in an array
 		-Randomize weights between neurons with values between -1 and 1
 	-Pass input values into network
-	-Product output
+	-Produce output
+		-Iterate through each node of each layer. If neuron is in first layer, iterate through the number of inputs and
+		update the output as follows:
+		output += hiddenweight * input
+		---Where hiddenweight is the weight associated with the current hidden node from the input node, and input is
+		the value of hte current input node
+		-If current node is not the first, then iterate through all the nodes of the previous hidden layer
+		output += hiddenweight * sigmahiddenprevious
+		---where hiddenweight is the weight associated with the node to be updated from the node of the previous hidden
+		layer, and sigmahiddenprevious is the sigma value of the output of the node from the previous hidden layer
+		Multiplying sigmaoutput from previous node by weight to current node
 	-Until output is correct:
 		-Train network
 		-Produce Output
+		-Validate Network (is Output correct?)

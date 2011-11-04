@@ -1,0 +1,8 @@
+To test the ANN, please run "test_ann.rb"
+
+There are two models in this folder, the model for the Artificial Neural Network is in ann.rb. The model for the Layer, which is requried by the ANN, is in layer.rb.
+
+The basic structure of the ANN is as follows:
+The ANN is instantiated with an array that specifies the number of neurons for each layer. The size of the array is equivalent to the number of layers in the ANN (including input and output). The ANN consists of 4 methods. There is an input setter that makes sure the provided input is the same size as the first (or input) layer of the ANN. The feed_forward() method feeds the values from the input layer through the ANN, and produces an output. The train() method uses the backpropagate() and feed_forward() methods together until the output matches the "desired_output" argument provied to train().
+
+The Layer model only has an initialize() method. When a new Layer is created, 2 arguments are required: the number of neurons in the current Layer, and the number of neurons in the next Layer. Each "neuron" in the current layer is an array that contains the weights from that neuron to each neuron in the next layer. So, if Layer.new() is provided the arguments (2, 3), it would create a Layer with 2 arrays, each containing 3 random weights between -1 and 1. This would correspond to a layer with 2 neurons that connects to a layer with 3 neurons. When creating the output layer, the second argument is 0.

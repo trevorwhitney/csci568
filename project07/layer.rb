@@ -4,6 +4,7 @@ class Layer
 	#initialize with number of neurons in this layer - x
 	#and number of neurons in next layer - y
 	def initialize(x, y)
+		@neurons = Array.new
 		x.times do
 			neuron = Array.new(y)
 			

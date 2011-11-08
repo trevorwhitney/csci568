@@ -84,10 +84,12 @@ class ArtificialNeuralNetwork
 
 	def train(input, output, iterations)
 		@input = input
+		count = 1
 		iterations.times do
 			feed_forward
 			backpropogate(output, 0.5)
-			printf "%.4f, %.4f, %.4f\n" % @output
+			printf "Output after #{count} iteration(s): %.4f, %.4f, %.4f\n" % @output
+			count += 1
 		end
 	end
 

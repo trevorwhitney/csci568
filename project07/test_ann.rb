@@ -23,7 +23,6 @@ class TestArtificialNeuralNetwork < Test::Unit::TestCase
 		@ann.input = @input
 		@ann.feed_forward
 		output = @ann.output
-		printf "Output after feed forward: %.4f, %.4f, %.4f\n" % output
 
 		assert_equal(3, output.size)
 		assert(output[0].abs <= 1)
@@ -33,7 +32,7 @@ class TestArtificialNeuralNetwork < Test::Unit::TestCase
 
 	def test_train
 		@ann = ArtificialNeuralNetwork.new(@layers)
-		iterations = 50
+		iterations = 100
 		@ann.train(@input, @output, iterations)
 		output = @ann.output
 		printf "Output after training for #{iterations} iterations: %.1f, %.1f, %.1f\n" % output

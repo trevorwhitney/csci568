@@ -92,8 +92,6 @@ class ArtificialNeuralNetwork
 	end
 
 	def backpropogate(desired_output, n)
-		deltas = Array.new
-
 		#calculate output error
 		output_deltas = Array.new(@output.size)
 		@output.each_index do |i|
@@ -102,11 +100,14 @@ class ArtificialNeuralNetwork
 		end
 
 		#calculate hidden layer error, do this for each hidden layer
+		hidden_deltas = Array.new
 		@layers.each_with_index do |layer, layer_index|
 			#hidden layers will be all the layers in the middle
 			if layer_index > 0 && layer_index < @layers.size - 1
 				values = layer.values
-				hidden_deltas = Array.new(values.size)
+				values.size.times do
+					hidden_deltas << 0.0
+				end
 				layer.neurons.each_with_index do |neuron, neuron_index|
 					error = 0.0
 					neuron.each_with_index do |weight, weight_index|
@@ -114,32 +115,31 @@ class ArtificialNeuralNetwork
 					end
 					hidden_deltas[neuron_index] = dtanh(values[neuron_index]) * error
 				end
-				#add current hidden layer's deltas to the master array
-				deltas << hidden_deltas
 			end
 		end
-
-		#output output_deltas to the end of master array
-		deltas << output_deltas
 
 		#binding.pry
 
-		#update weights
-		@layers.each_with_index do |layer, layer_index|
-			if layer_index < @layers.size - 1
-				layer_deltas = deltas[layer_index]
-				layer.neurons.each_with_index do |neuron, neuron_index|
-					neuron.each_with_index do |weight, weight_index|
-						change = layer_deltas[weight_index] * layer.values[neuron_index]
-						layer.neurons[neuron_index][weight_index] = weight * n * change
-					end
-				end
+		#update ouput weights
+		@layers[1].neurons.each_with_index do |neuron, neuron_index|
+			@output.each_index do |i|
+				change = output_deltas[i]*@layers[1].values[neuron_index]
+				@layers[1].neurons[neuron_index][i] += n * change
 			end
 		end
+
+		#update input weights
+		@input.each_with_index do |input, input_index|
+			@layers[1].neurons.each_with_index do |neuron, neuron_index|
+				change = hidden_deltas[neuron_index]*input
+				@layers[0].neurons[input_index][neuron_index] += n * change
+			end
+		end
+	
 	end
 
 	def dtanh(y)
-		return 1.0 - y * y
+		return 1.0-y*y
 	end
 		
 end

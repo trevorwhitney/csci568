@@ -33,10 +33,13 @@ class TestArtificialNeuralNetwork < Test::Unit::TestCase
 
 	def test_train
 		@ann = ArtificialNeuralNetwork.new(@layers)
-		iterations = 30
+		iterations = 50
 		@ann.train(@input, @output, iterations)
 		output = @ann.output
 		printf "Output after training for #{iterations} iterations: %.1f, %.1f, %.1f\n" % output
+		output.each_with_index do |o, i|
+			output[i] = o.round
+		end
 
 		assert_equal(@output, output)
 	end

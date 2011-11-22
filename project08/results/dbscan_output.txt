@@ -1,0 +1,53 @@
+Clustered Instances
+
+ 0       256 (  3%)
+ 1      1000 ( 12%)
+ 2       768 (  9%)
+ 3      2016 ( 25%)
+ 4        96 (  1%)
+ 5       192 (  2%)
+ 6      1312 ( 16%)
+ 7        96 (  1%)
+ 8       864 ( 11%)
+ 9        48 (  1%)
+10        48 (  1%)
+11       864 ( 11%)
+12        32 (  0%)
+13         8 (  0%)
+14       192 (  2%)
+15       144 (  2%)
+16       144 (  2%)
+17        18 (  0%)
+18        18 (  0%)
+19         8 (  0%)
+
+
+Class attribute: class
+Classes to Clusters:
+
+    0    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19  <-- assigned to cluster
+  256   72    0  288    0   96 1296   96  864    0    0  864   32    8    0    0    0   18   18    8 | p
+    0  928  768 1728   96   96   16    0    0   48   48    0    0    0  192  144  144    0    0    0 | e
+
+Cluster  0 <-- No class
+Cluster  1 <-- No class
+Cluster  2 <-- No class
+Cluster  3 <-- e
+Cluster  4 <-- No class
+Cluster  5 <-- No class
+Cluster  6 <-- p
+Cluster  7 <-- No class
+Cluster  8 <-- No class
+Cluster  9 <-- No class
+Cluster 10 <-- No class
+Cluster 11 <-- No class
+Cluster 12 <-- No class
+Cluster 13 <-- No class
+Cluster 14 <-- No class
+Cluster 15 <-- No class
+Cluster 16 <-- No class
+Cluster 17 <-- No class
+Cluster 18 <-- No class
+Cluster 19 <-- No class
+
+Incorrectly clustered instances :  5100.0  62.777  %

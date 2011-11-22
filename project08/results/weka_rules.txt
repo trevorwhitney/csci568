@@ -1,0 +1,66 @@
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -N 10 -T 0 -C 0.9 -D 0.05 -U 1.0 -M 0.1 -S -1.0 -A -c 1
+Relation:     mushroom.data
+Instances:    8124
+Attributes:   23
+              class
+              cap-shape
+              cap-surface
+              cap-color
+              bruises?
+              odor
+              gill-attachment
+              gill-spacing
+              gill-size
+              gill-color
+              stalk-shape
+              stalk-root
+              stalk-surface-above-ring
+              stalk-surface-below-ring
+              stalk-color-above-ring
+              stalk-color-below-ring
+              veil-type
+              veil-color
+              ring-number
+              ring-type
+              spore-print-color
+              population
+              habitat
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.35 (2843 instances)
+Minimum metric <confidence>: 0.9
+Number of cycles performed: 13
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 17
+
+Size of set of large itemsets L(2): 52
+
+Size of set of large itemsets L(3): 69
+
+Size of set of large itemsets L(4): 43
+
+Size of set of large itemsets L(5): 12
+
+Size of set of large itemsets L(6): 1
+
+Best rules found:
+
+ 1. odor=n ring-number=o 2928 ==> class=e 2880    conf:(0.98)
+ 2. odor=n veil-type=p ring-number=o 2928 ==> class=e 2880    conf:(0.98)
+ 3. odor=n gill-size=b 3288 ==> class=e 3216    conf:(0.98)
+ 4. odor=n gill-size=b veil-type=p 3288 ==> class=e 3216    conf:(0.98)
+ 5. odor=n gill-attachment=f gill-size=b 3096 ==> class=e 3024    conf:(0.98)
+ 6. odor=n gill-size=b veil-color=w 3096 ==> class=e 3024    conf:(0.98)
+ 7. odor=n gill-attachment=f gill-size=b veil-type=p 3096 ==> class=e 3024    conf:(0.98)
+ 8. odor=n gill-attachment=f gill-size=b veil-color=w 3096 ==> class=e 3024    conf:(0.98)
+ 9. odor=n gill-size=b veil-type=p veil-color=w 3096 ==> class=e 3024    conf:(0.98)
+10. odor=n gill-attachment=f gill-size=b veil-type=p veil-color=w 3096 ==> class=e 3024    conf:(0.98)
+

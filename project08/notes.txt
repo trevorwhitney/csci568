@@ -1,0 +1,3 @@
+PCA - for visualization
+Z score - # of standard deviations
+	-box plot

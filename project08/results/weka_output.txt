@@ -1,0 +1,397 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.MultilayerPerceptron -L 0.3 -M 0.2 -N 500 -V 0 -S 0 -E 20 -H a
+Relation: mushroom.decimal-data
+Instances:8124
+Attributes:23
+              class
+              cap-shape
+              cap-surface
+              cap-color
+              bruises?
+              odor
+              gill-attachment
+              gill-spacing
+              gill-size
+              gill-color
+              stalk-shape
+              stalk-root
+              stalk-surface-above-ring
+              stalk-surface-below-ring
+              stalk-color-above-ring
+              stalk-color-below-ring
+              veil-type
+              veil-color
+              ring-number
+              ring-type
+              spore-print-color
+              population
+              habitat
+Test mode:10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Sigmoid Node 0
+    Inputs    Weights
+    Threshold    -0.8010552778004216
+    Node 2    3.302861343090065
+    Node 3    0.5945767671781484
+    Node 4    4.167624799783845
+    Node 5    -3.460702145244995
+    Node 6    2.44270292461809
+    Node 7    2.999452826307219
+    Node 8    -5.249273375430317
+    Node 9    -2.574662725041055
+    Node 10    -3.42296744471265
+    Node 11    -3.710069521944309
+    Node 12    -3.3350535858671795
+    Node 13    -5.16639443538195
+Sigmoid Node 1
+    Inputs    Weights
+    Threshold    0.7783624179039101
+    Node 2    -3.2877785431701607
+    Node 3    -0.5253591571483649
+    Node 4    -4.161043364078143
+    Node 5    3.441233425186917
+    Node 6    -2.45755905216482
+    Node 7    -2.9955511282988376
+    Node 8    5.267025901261209
+    Node 9    2.52029339024217
+    Node 10    3.4032951033797105
+    Node 11    3.750165203851392
+    Node 12    3.3402565219844513
+    Node 13    5.185756803660579
+Sigmoid Node 2
+    Inputs    Weights
+    Threshold    0.7649560359640808
+    Attrib cap-shape    -0.4878022524809391
+    Attrib cap-surface    -0.7951170123815616
+    Attrib cap-color    -0.06251054363792578
+    Attrib bruises?    -2.923769652550557
+    Attrib odor    3.147306432767312
+    Attrib gill-attachment    -0.7673024838669549
+    Attrib gill-spacing    0.6844212377278684
+    Attrib gill-size    -1.1417175660619763
+    Attrib gill-color    0.30592288479590973
+    Attrib stalk-shape    0.6875328128046303
+    Attrib stalk-root    -0.08762530864248112
+    Attrib stalk-surface-above-ring    0.6872131421658997
+    Attrib stalk-surface-below-ring    -0.05372360637844903
+    Attrib stalk-color-above-ring    0.54116463574304
+    Attrib stalk-color-below-ring    -1.3121849870526063
+    Attrib veil-type    -0.028357965364840677
+    Attrib veil-color    -0.0922996874913985
+    Attrib ring-number    -0.886323405062117
+    Attrib ring-type    -1.3327264129584868
+    Attrib spore-print-color    1.0149191497567926
+    Attrib population    -1.3023800761086457
+    Attrib habitat    0.8207189822760107
+Sigmoid Node 3
+    Inputs    Weights
+    Threshold    -0.016775458880214054
+    Attrib cap-shape    0.03833335438206018
+    Attrib cap-surface    0.019931795550920197
+    Attrib cap-color    -0.005823929632802437
+    Attrib bruises?    -0.2072752787979137
+    Attrib odor    0.38657123954726724
+    Attrib gill-attachment    0.082472089073262
+    Attrib gill-spacing    0.16687872317647187
+    Attrib gill-size    0.28577754417763346
+    Attrib gill-color    0.062292699051780955
+    Attrib stalk-shape    0.05257396447333749
+    Attrib stalk-root    -0.018052813701502822
+    Attrib stalk-surface-above-ring    0.2868003401459838
+    Attrib stalk-surface-below-ring    0.31670969143556366
+    Attrib stalk-color-above-ring    0.2510422420570833
+    Attrib stalk-color-below-ring    0.1432208362438263
+    Attrib veil-type    0.010730695319218754
+    Attrib veil-color    0.0713386130543733
+    Attrib ring-number    0.1220979424264813
+    Attrib ring-type    0.09757487889768045
+    Attrib spore-print-color    0.23570926020039001
+    Attrib population    -0.03757353275727927
+    Attrib habitat    0.16339104717188133
+Sigmoid Node 4
+    Inputs    Weights
+    Threshold    0.9126570536856818
+    Attrib cap-shape    0.07410930924559264
+    Attrib cap-surface    0.2824569828439521
+    Attrib cap-color    0.11911894404759218
+    Attrib bruises?    0.2664868491268024
+    Attrib odor    4.827345141868593
+    Attrib gill-attachment    -0.9063290879390007
+    Attrib gill-spacing    -1.9538882995590823
+    Attrib gill-size    -2.968684145102246
+    Attrib gill-color    0.0039103571778469045
+    Attrib stalk-shape    -0.5497592103078881
+    Attrib stalk-root    -1.4743664877779408
+    Attrib stalk-surface-above-ring    0.2829125108551631
+    Attrib stalk-surface-below-ring    0.6823697039406075
+    Attrib stalk-color-above-ring    0.6588193292921857
+    Attrib stalk-color-below-ring    -2.771720301798475
+    Attrib veil-type    -0.02863246263355588
+    Attrib veil-color    0.0839370298309129
+    Attrib ring-number    -1.1396264923307737
+    Attrib ring-type    1.4656420107593755
+    Attrib spore-print-color    2.9638005324257173
+    Attrib population    0.43219623103657645
+    Attrib habitat    -2.3531064134630792
+Sigmoid Node 5
+    Inputs    Weights
+    Threshold    -1.3210253511856296
+    Attrib cap-shape    0.1508862225223558
+    Attrib cap-surface    0.7141452802985571
+    Attrib cap-color    0.2093032609863491
+    Attrib bruises?    1.8502890070421447
+    Attrib odor    -1.754407325477485
+    Attrib gill-attachment    0.5329059465590416
+    Attrib gill-spacing    -0.060973657784962616
+    Attrib gill-size    -0.6394429798600041
+    Attrib gill-color    -0.13338457491735475
+    Attrib stalk-shape    -0.08495776430138127
+    Attrib stalk-root    -0.24431448512111628
+    Attrib stalk-surface-above-ring    -0.906935824766504
+    Attrib stalk-surface-below-ring    -0.3987657076358017
+    Attrib stalk-color-above-ring    -0.40664838238600187
+    Attrib stalk-color-below-ring    -0.10603194135781627
+    Attrib veil-type    0.03320597571889339
+    Attrib veil-color    1.0924289976105765
+    Attrib ring-number    0.49510312835423553
+    Attrib ring-type    1.4589293842608824
+    Attrib spore-print-color    0.09447999007660907
+    Attrib population    0.40411319683013874
+    Attrib habitat    -1.0955409259656121
+Sigmoid Node 6
+    Inputs    Weights
+    Threshold    0.8530880289889057
+    Attrib cap-shape    0.31728177583540007
+    Attrib cap-surface    -0.45835230515057435
+    Attrib cap-color    -0.3429296253203719
+    Attrib bruises?    -1.451108458493746
+    Attrib odor    1.5818976039810515
+    Attrib gill-attachment    -0.4097736492819636
+    Attrib gill-spacing    -0.41913046637008766
+    Attrib gill-size    0.07981469993395011
+    Attrib gill-color    0.10284643882628068
+    Attrib stalk-shape    0.04266669540821354
+    Attrib stalk-root    -0.4821392400535447
+    Attrib stalk-surface-above-ring    1.039362415067631
+    Attrib stalk-surface-below-ring    0.8481691282962608
+    Attrib stalk-color-above-ring    0.47611380901702166
+    Attrib stalk-color-below-ring    -0.07209595118846984
+    Attrib veil-type    -0.009512545902769884
+    Attrib veil-color    -0.5115646915564441
+    Attrib ring-number    -0.46979390672700905
+    Attrib ring-type    -0.2849725813642783
+    Attrib spore-print-color    0.9281321579457172
+    Attrib population    -0.18251634923713264
+    Attrib habitat    0.1268362867825211
+Sigmoid Node 7
+    Inputs    Weights
+    Threshold    0.787332570384185
+    Attrib cap-shape    0.06370773416745779
+    Attrib cap-surface    0.21313956538285608
+    Attrib cap-color    0.07781953754561563
+    Attrib bruises?    0.2691828214300447
+    Attrib odor    3.974190569539328
+    Attrib gill-attachment    -0.7624015606053685
+    Attrib gill-spacing    -1.540441521510652
+    Attrib gill-size    -2.4832668685194244
+    Attrib gill-color    0.010285488990350873
+    Attrib stalk-shape    -0.5220202000207407
+    Attrib stalk-root    -1.2445641381218024
+    Attrib stalk-surface-above-ring    0.2726781497818659
+    Attrib stalk-surface-below-ring    0.6071310311958751
+    Attrib stalk-color-above-ring    0.5327448440264094
+    Attrib stalk-color-below-ring    -2.1936279752850703
+    Attrib veil-type    -0.03749650410218645
+    Attrib veil-color    -0.009362808735563739
+    Attrib ring-number    -0.9824216832328424
+    Attrib ring-type    1.1558839941511434
+    Attrib spore-print-color    2.3689946293401403
+    Attrib population    0.32945421997557683
+    Attrib habitat    -1.8463326656743033
+Sigmoid Node 8
+    Inputs    Weights
+    Threshold    -0.8952569793992423
+    Attrib cap-shape    -0.07130984327308233
+    Attrib cap-surface    -0.28720587020937616
+    Attrib cap-color    -0.18004193292385565
+    Attrib bruises?    -0.3206592884280154
+    Attrib odor    -4.762655143321779
+    Attrib gill-attachment    0.9100915641482841
+    Attrib gill-spacing    2.046817039019731
+    Attrib gill-size    3.0118136746381006
+    Attrib gill-color    -0.0388522621016673
+    Attrib stalk-shape    0.5197901508349727
+    Attrib stalk-root    1.4328481633931713
+    Attrib stalk-surface-above-ring    -0.23909493505651366
+    Attrib stalk-surface-below-ring    -0.6438785593709246
+    Attrib stalk-color-above-ring    -0.6416660892643584
+    Attrib stalk-color-below-ring    2.6946030204583202
+    Attrib veil-type    -0.025263553844673672
+    Attrib veil-color    -0.04816796366140394
+    Attrib ring-number    1.1045773877898533
+    Attrib ring-type    -1.4818581359580942
+    Attrib spore-print-color    -2.879836903257869
+    Attrib population    -0.4821655595865796
+    Attrib habitat    2.413145779169084
+Sigmoid Node 9
+    Inputs    Weights
+    Threshold    -0.7913939548149489
+    Attrib cap-shape    0.043356003596397005
+    Attrib cap-surface    0.11546932631943232
+    Attrib cap-color    -0.019094384861087017
+    Attrib bruises?    -0.13456722377318817
+    Attrib odor    -2.704578782466946
+    Attrib gill-attachment    0.5536802486238044
+    Attrib gill-spacing    0.865431454484308
+    Attrib gill-size    1.7207671467846823
+    Attrib gill-color    -0.05447335023918168
+    Attrib stalk-shape    0.5425800676935522
+    Attrib stalk-root    0.696785910857432
+    Attrib stalk-surface-above-ring    -0.3442941817053924
+    Attrib stalk-surface-below-ring    -0.5860174706311335
+    Attrib stalk-color-above-ring    -0.348353142992162
+    Attrib stalk-color-below-ring    1.2549340782952836
+    Attrib veil-type    -0.033081670770350374
+    Attrib veil-color    0.276437063257204
+    Attrib ring-number    0.7538269186475498
+    Attrib ring-type    -0.7806007173108983
+    Attrib spore-print-color    -1.553402154161641
+    Attrib population    -0.11106444642148718
+    Attrib habitat    1.0344305666910474
+Sigmoid Node 10
+    Inputs    Weights
+    Threshold    -1.2329494149531248
+    Attrib cap-shape    0.10439082956523094
+    Attrib cap-surface    0.5993998405553237
+    Attrib cap-color    0.11865199216018034
+    Attrib bruises?    1.6710877435756046
+    Attrib odor    -1.834878517581074
+    Attrib gill-attachment    0.509692522949536
+    Attrib gill-spacing    -0.055321620051108286
+    Attrib gill-size    -0.5019906876956841
+    Attrib gill-color    -0.12093705422576127
+    Attrib stalk-shape    -0.07665608897718879
+    Attrib stalk-root    -0.11330242307269683
+    Attrib stalk-surface-above-ring    -0.9650953862165251
+    Attrib stalk-surface-below-ring    -0.33619089803975305
+    Attrib stalk-color-above-ring    -0.4180235798158533
+    Attrib stalk-color-below-ring    -0.09480211773048793
+    Attrib veil-type    -0.014437464380681476
+    Attrib veil-color    1.0723285164614587
+    Attrib ring-number    0.5331462850875119
+    Attrib ring-type    1.4075636802143765
+    Attrib spore-print-color    -0.043088271213177744
+    Attrib population    0.3637083777117999
+    Attrib habitat    -1.0929685522947252
+Sigmoid Node 11
+    Inputs    Weights
+    Threshold    -1.4225714348581944
+    Attrib cap-shape    0.18119752213693602
+    Attrib cap-surface    0.7679721777619747
+    Attrib cap-color    0.18538785692685977
+    Attrib bruises?    1.9733478175328913
+    Attrib odor    -1.9564773753206304
+    Attrib gill-attachment    0.6413833218238022
+    Attrib gill-spacing    -0.15016216023189993
+    Attrib gill-size    -0.7220806384080495
+    Attrib gill-color    -0.15426277965031768
+    Attrib stalk-shape    -0.11437123747350428
+    Attrib stalk-root    -0.2821621727514523
+    Attrib stalk-surface-above-ring    -1.011177694343994
+    Attrib stalk-surface-below-ring    -0.3717583757226891
+    Attrib stalk-color-above-ring    -0.3961990929695682
+    Attrib stalk-color-below-ring    -0.10445135554239335
+    Attrib veil-type    -0.029668571128431066
+    Attrib veil-color    1.1938250647663096
+    Attrib ring-number    0.5698865533229802
+    Attrib ring-type    1.663644791814127
+    Attrib spore-print-color    0.07297133234569192
+    Attrib population    0.48845789870473927
+    Attrib habitat    -1.249525585180596
+Sigmoid Node 12
+    Inputs    Weights
+    Threshold    -1.0796576802440898
+    Attrib cap-shape    0.07885480574457764
+    Attrib cap-surface    0.28369378308512594
+    Attrib cap-color    0.026444026559877182
+    Attrib bruises?    0.6096774416245649
+    Attrib odor    -2.153652015788051
+    Attrib gill-attachment    0.4098902616030548
+    Attrib gill-spacing    -0.19377069116644702
+    Attrib gill-size    -0.14932259205633688
+    Attrib gill-color    -0.23149440148961484
+    Attrib stalk-shape    -0.2832438339735306
+    Attrib stalk-root    -0.23132596564819924
+    Attrib stalk-surface-above-ring    -1.0912788128232225
+    Attrib stalk-surface-below-ring    -0.4060557357539026
+    Attrib stalk-color-above-ring    -0.5048403655802445
+    Attrib stalk-color-below-ring    -0.21952832609503395
+    Attrib veil-type    0.034928669962951284
+    Attrib veil-color    0.8362503990983201
+    Attrib ring-number    0.3265671078654613
+    Attrib ring-type    1.274036992926648
+    Attrib spore-print-color    -0.34798012361524844
+    Attrib population    0.2369380652364779
+    Attrib habitat    -0.9986313806687332
+Sigmoid Node 13
+    Inputs    Weights
+    Threshold    -0.8622916094701586
+    Attrib cap-shape    -0.0716737744358749
+    Attrib cap-surface    -0.29043382258897904
+    Attrib cap-color    -0.18665915413894452
+    Attrib bruises?    -0.3412638788408001
+    Attrib odor    -4.699135134514082
+    Attrib gill-attachment    0.9208117548752704
+    Attrib gill-spacing    2.040841471214431
+    Attrib gill-size    2.9828478866718
+    Attrib gill-color    -0.06108308327342632
+    Attrib stalk-shape    0.5084625584907317
+    Attrib stalk-root    1.4530335666405498
+    Attrib stalk-surface-above-ring    -0.22059380821778016
+    Attrib stalk-surface-below-ring    -0.6590491264974463
+    Attrib stalk-color-above-ring    -0.6561915225437335
+    Attrib stalk-color-below-ring    2.6796354718831243
+    Attrib veil-type    0.02318657513167055
+    Attrib veil-color    -0.05833664501201099
+    Attrib ring-number    1.0835625490292358
+    Attrib ring-type    -1.4101771277280544
+    Attrib spore-print-color    -2.834909235274817
+    Attrib population    -0.46937501605347937
+    Attrib habitat    2.354267432907472
+Class p
+    Input
+    Node 0
+Class e
+    Input
+    Node 1
+
+
+Time taken to build model: 26.67seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        8052               99.1137 %
+Incorrectly Classified Instances        72                0.8863 %
+Kappa statistic                          0.9823
+Mean absolute error                      0.0092
+Root mean squared error                  0.0941
+Relative absolute error                  1.8498 %
+Root relative squared error             18.8419 %
+Total Number of Instances             8124     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 1         0.017      0.982     1         0.991      0.988    p
+                 0.983     0          1         0.983     0.991      0.988    e
+Weighted Avg.    0.991     0.008      0.991     0.991     0.991      0.988
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 3916    0 |    a = p
+   72 4136 |    b = e

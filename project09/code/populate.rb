@@ -15,10 +15,10 @@ class Populate
   def load_all
     puts "Loading all data..."
     #Load Artists, Genres, Albums, Tracks, Users, Ratings
-    load_artists
-    puts "Loaded artists..."
-    load_genres
-    puts "Loaded genres..."
+    #load_artists
+    #puts "Loaded artists..."
+    #load_genres
+    #puts "Loaded genres..."
     load_albums
     puts "Loaded albums..."
     load_tracks
@@ -55,10 +55,13 @@ class Populate
   end
 
   def load_albums
+    count = 0
     CSV.foreach('data/track1/albumData1.txt', {:col_sep => '|'}) do |row|
       album = Album.new do |a|
         a.id = row[0].to_i
-        a.artist = Artist.find row[1].to_i
+        unless row[1] == "None"
+          a.artist = Artist.find row[1].to_i
+        end
       end
       if row.size > 2
         genres = Array.new
@@ -69,18 +72,19 @@ class Populate
           genre = Genre.find_or_create_by_id g
           album.genres << genre
         end
-        puts "Created album with id: #{row[0]}"
-        album.save
       end
+      puts "#{count}.) Created album with id: #{row[0]}, artist: #{row[1]}, and #{row.size - 2} genres"
+      count += 1
+      album.save!
     end
   end
 
   def load_tracks
-    CSV.foreach('data/track1/trackData1.text', {:col_sep => '|'}) do |row|
+    CSV.foreach('data/track1/trackData1.txt', {:col_sep => '|'}) do |row|
       track = Track.new do |t|
-        t.id = row[0] 
-        t.album = Album.find row[1].to_i
-        t.artist = Artist.find row[2].to_i
+        t.id = row[0]
+        t.album = Album.find row[1].to_i unless row[1] == "None"
+        t.artist = Artist.find row[2].to_i unless row[2] == "None"
       end
       
       if row.size > 3
@@ -92,9 +96,9 @@ class Populate
           genre = Genre.find_or_create_by_id g
           track.genres << genre
         end
-        puts "Created track with id: #{row[0]}"
-        track.save
       end
+      puts "Created track with id: #{row[0]}"
+      track.save!
     end
   end
 
@@ -116,7 +120,7 @@ class Populate
       index = header_values[0] + 1
       user = User.new do |u|
         u.id = header_values[1]
-        u.save
+        u.save!
       end
       header_values[2].times do
         line = training_data[index]
@@ -124,7 +128,7 @@ class Populate
         rating = Rating.new :item_id => line_a[0].to_i, :score => line_a[1].to_i, :date => line_a[2].to_i,
           :time => line_a[3].to_i
         rating.user = user
-        rating.save
+        rating.save!
         index += 1
       end
       puts "Created user with id: #{header_values[1]} and #{header_values[2]} ratings"

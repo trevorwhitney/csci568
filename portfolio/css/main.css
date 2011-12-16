@@ -1,3 +1,44 @@
+body {
+  background: url('bg.png');
+  color: #EEE;
+}
+P { margin-bottom: 0.08in }
+.title {
+  width: 500px;
+  text-align: center;
+  margin: 0 auto 30px;
+}
+.tree {
+  margin: 10px auto;
+  width: 495px;
+}
+div.container {
+  background: rgba(139, 78, 68, 0.75);
+  border-radius: 5px;
+  box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.7);
+  padding: 5px 35px;
+  width: 750px;
+}
+h1, h2, h3, h4, h5 {
+  color: rgb(134, 152, 89);
+}
+h1 {
+  text-decoration: underline;
+}
+h1, .byline {
+  color: rgb(241, 226, 214);
+}
+a {
+  color: #EEE;
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(95, 139, 215);
+  text-decoration: underline;
+}
+a:active {
+  color: rgb(34, 54, 88);
+}
 ol.toc {
   list-style-type: none;
   margin: 0px;
@@ -6,6 +47,13 @@ ol.toc {
 ol.toc li a {
   font-size: 2em;
   text-decoration: none;
+  color: rgb(134, 152, 89);
+}
+ol.toc li a:hover {
+  text-decoration: underline;
+}
+ol.toc li a:active {
+  color: rgb(109, 133, 78)
 }
 
 p.introduction {
@@ -15,9 +63,5 @@ p.introduction {
 pre.code {
   padding: 20px;
   background-color: #F0FFF0;
-}
-
-div.container {
-  width: 700px;
 }
 

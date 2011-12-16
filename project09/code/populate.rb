@@ -19,10 +19,10 @@ class Populate
     #puts "Loaded artists..."
     #load_genres
     #puts "Loaded genres..."
-    load_albums
-    puts "Loaded albums..."
-    load_tracks
-    puts "Loaded tracks..."
+    #load_albums
+    #puts "Loaded albums..."
+    #load_tracks
+    #puts "Loaded tracks..."
     load_users_and_ratings
     puts "Loaded users and ratings..."
     puts "Loading finished."
@@ -108,11 +108,11 @@ class Populate
     training_data.each_with_index do |line, index|
       if line =~ /^[\d]+\|[\d]+$/
         #line is [index, user, # of ratings]
-        line = Array.new(3)
-        line[0] = index
-        line[1] = line.match(/^[\d]+/).to_s.to_i
-        line[2] = line.match(/[\d]+$/).to_s.to_i
-        headers << line
+        lines = Array.new(3)
+        lines[0] = index
+        lines[1] = line[/^[\d]+/].to_i
+        lines[2] = line[/[\d]+$/].to_i
+        headers << lines
       end
     end
 

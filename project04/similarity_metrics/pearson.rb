@@ -1,3 +1,4 @@
+require 'pry'
 require_relative 'similarityMetric'
 
 class PearsonCorrelation < SimilarityMetric
@@ -20,6 +21,8 @@ class PearsonCorrelation < SimilarityMetric
 		#Pearson score
 		numerator = productSum - (sum1*sum2/@similarity.length)
 		denomenator = Math.sqrt((sum1Sq-(sum1**2)/@similarity.length)*(sum2Sq-(sum2**2)/@similarity.length))
+		
+		binding.pry
 		return 0 if denomenator == 0
 
 		r = numerator/denomenator

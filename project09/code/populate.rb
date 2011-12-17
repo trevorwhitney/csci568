@@ -15,14 +15,14 @@ class Populate
   def load_all
     puts "Loading all data..."
     #Load Artists, Genres, Albums, Tracks, Users, Ratings
-    #load_artists
-    #puts "Loaded artists..."
-    #load_genres
-    #puts "Loaded genres..."
-    #load_albums
-    #puts "Loaded albums..."
-    #load_tracks
-    #puts "Loaded tracks..."
+    load_artists
+    puts "Loaded artists..."
+    load_genres
+    puts "Loaded genres..."
+    load_albums
+    puts "Loaded albums..."
+    load_tracks
+    puts "Loaded tracks..."
     load_users_and_ratings
     puts "Loaded users and ratings..."
     puts "Loading finished."

@@ -55,7 +55,19 @@ ol.toc li a:hover {
 ol.toc li a:active {
   color: rgb(109, 133, 78)
 }
-
+ul.navigation {
+  list-style-type: none;
+}
+ul.navigation li{
+  text-align: center;
+  font-size: 8pt;
+  width:100px;
+  padding: 0 2px;
+  float: left;
+}
+ul.navigation li.first{
+  text-align: left;
+}
 p.introduction {
   width: 400px;
 }
@@ -63,5 +75,45 @@ p.introduction {
 pre.code {
   padding: 20px;
   background-color: #F0FFF0;
+}
+div.equation {
+  color: #222;
+  font-size: 14pt;
+  text-align: center;
+  padding: 5px 0px;
+}
+.figure {
+  padding: 5px 0;
+  margin: 0 auto;
+  width: 400px;
+}
+.figure img{
+  margin: 0 auto;
+  padding: 0;
+  width:400px;
+}
+
+.double-figure img {
+  margin: 0;
+  padding: 0;
+  width: 350px;
+}
+
+.gallery {
+  margin: 5px 0px;
+}
+
+.gallery li {
+  float:left;
+  list-style-type:none;
+  padding: 5px;
+}
+
+.gallery li.first {
+  padding-left: 0px;
+}
+
+.gallery li p {
+  width: 150px;
 }
 

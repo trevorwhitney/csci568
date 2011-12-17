@@ -2,9 +2,9 @@
 <html>
 <head>
 	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
-	<TITLE>The Data Mining Process, What's In A Name?</TITLE>
+	<TITLE>Application: The Badges Problem</TITLE>
 	<meta name="keywords" content="data mining, big data, badges" />
-  <meta name="description" content="Applictation of data mining techniques in the badeges problem. Section four of Trevor Whitney's data mining portfolio." />
+  <meta name="description" content="Applictation of data mining techniques in the badeges problem. Section seven of Trevor Whitney's data mining portfolio." />
   <meta name="author" content="Trevor Whitney" />
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -28,7 +28,7 @@
 		<h1>Application: The Badges Problem</h1>
 		<P>Like any good data miner, I started by watching <I>The Office</I>. Unfortunately, the episode “The List” did not help me figure out the winners and losers in our dataset, since Dwight, Oscar, Andy, Phyllis, Angela, Gabe, Kelly, Pam, and Meredith were all misclassified. Guess this was going to be a little harder than watching TV. Below is my story of how I solved Project 6: “What's in a Name?”. My process began with summary statistics, digressed into a few hours of chasing irrelevant features and wrestling with data mining tools, and finished when I discovered the pattern using the simplest of tools, a text editor. Finally, my story concludes in the devastating discovery that I, Trevor Whitney, am a loser.</P>
 		<P>	We were given a list of names, with labels. 213 of these names were winners, while 85 were losers. My first step was to extract this information from the set. Maybe the distribution of classes could tell me something about the data? For example, if there were only 10  out of 295 names that were losers, that would be a pretty easy set to manually examine for patterns. Since the data was in a SQLite database, the first tool I used was a SQLite console. I ran a couple queries, such as <code>select count(id) from people where label == " + "</code>, and again where label was “ - ” to get some summary statistics about my class distribution. I found that 213, or 71% of my data were winners, while 85, or 29% were losers. While there was a considerable skew towards winners, 85 was still more records than I could go through manually, so I would need to extract features from these names and run them through a classifier to find my pattern.</P>
-		<P>	Next I brainstormed some features I could pull from these names. I limited my scope to features that could easily be obtained programmatically, since we were instructed to write scripts to extract these features. So, for example, I did not try to figure out if the name rhymed with anything, since this would be rather hard to teach a computer to do in a quick “script”. Instead I focused on things like counting the characters in the first and last name, extracting the first and last character from each name, and so on. The features I pulled out were:</P>
+		<P>	Next I brainstormed some features I could pull from these names. I limited my scope to features that could easily be obtained algorithmically, since we were instructed to write scripts to extract these features. So, for example, I did not try to figure out if the name rhymed with anything, since this would be rather hard to teach a computer to do in a quick “script”. Instead I focused on things like counting the characters in the first and last name, extracting the first and last character from each name, and so on. The features I pulled out were:</P>
 		<UL>
 			<li>Character count of each name: first, last, and middle if available.</li>
 			<li>Character count for the entire name.</li>

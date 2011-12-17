@@ -69,6 +69,7 @@
         </div>
       </li>
     </ul>
+    <sup>1</sup>
   <p class="clear">In the above example, moving the red centroid to the mean of it's member data points resulted in it's picking up of a new member point. Below is an implementation of the K-Means clustering algorithm. It takes K, or the number of desired clusters, as it's only argument, and uses Euclidean distance for measuring the distance between data points and centroids.</p>
   <script src="https://gist.github.com/1429345.js"> </script>
   <p>K-Means is great at finding distinct natural groupings in data. However, it is very sensitive to the specified K value. Specifying a good value for K may require domain knowledge, and a thorough survey of the data before clustering. K-Means is also sensitive to outliers, as they can easily throw off the accurate placement of a centroid. Finally, K-Means can only find globular clusters in data.</p>
@@ -78,6 +79,11 @@
   <p>DBSCAN finds clusters based on the density of points within them. Instead of using centroids, like the previous two methods, DBSCAN creates groups of data points based on if there are a certain number of points within a certain radius from a given point. This is great for finding clusters in data that are not globular. For example, take a look at the graph below. DBSCAN was able to discover the red and blue clusters in this data. K-Means, with a K of 2, would have found very different clusters, both like consisting of a mix of points from each of the real, or natural clusters. For data like this, DBSCAN is a much better approach.</p>
   <img src="images/dbscan.png" />
   <p>DBSCAN requires two parameters, an epsilon and minimum points value. The algorithm begins at a random point, and looks for points in that initial point's epsilon neighborhood. The epsilon neighborhood is a circle around a point with a radius equal to the epsilon value. If the algorithm finds a number of points within this epsilon neighborhood that is equal to or greater than the minimum points value, then all these points are clustered together with the initial point. The epsilon neighborhood of these points is also explored, and if the minimum number of points are found, the points from this neighborhood are added to the cluster. If a point is exactly the epsilon distance from the initial point, it is added to the new cluster, but it's epsilon neighborhood is not added. These are called "edge" points. If a point does not have the minimum number of points within it's epsilon neighborhood, then it is labeled as noise. This process continues until all points are either a part of a cluster, or labeled as noise. In the picture above, points are either apart of the red cluster, the blue cluster, or are noise, denoted by gray.</p>
+  <hr />
+  <h3>Works Cited</h3>
+  <ol class="works-cited">
+    <li>"K-means Clustering." Wikipedia, 16 Dec. 2011. Web. 17 Dec. 2011. &lt;http://en.wikipedia.org/wiki/K-means_clustering&gt;.</li>
+  </ol>
 </div>
 </body>
 </html>

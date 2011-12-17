@@ -1,0 +1,223 @@
+<html>
+	<head>
+		<title>Application: The Classic Mushroom Dataset</title>
+		<meta name="keywords" content="data mining, big data, mushrooms" />
+	  <meta name="description" content="Applictation of data mining techniques with the classic mushroom data set. Section eight of Trevor Whitney's data mining portfolio." />
+	  <meta name="author" content="Trevor Whitney" />
+	  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	  <meta http-equiv="Content-Style-Type" content="text/css" />
+	  <link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+	  <link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+	  <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" /> 
+	  <!--[if IE]>
+	    <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+	  <![endif]-->
+	  <script type="text/x-mathjax-config">
+	    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	  </script>
+	  <script type="text/javascript"
+	    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Application: The Classic Mushroom Dataset</h1>
+			<ul class="navigation span-24">
+				<li class="first"><h3><a href="#intro">Introduction</a></h3></li>
+				<li><h3><a href="#stats">Statistics</a></h3></li>
+				<li><h3><a href="#clusters">Clusters</a></h3></li>
+				<li><h3><a href="#classes">Classification</a></h3></li>
+				<li><h3><a href="#anomalies">Anomalies</a></h3></li>
+				<li><h3><a href="#association">Association</a></h3></li>
+				<li><h3><a href="#conclusion">Conclusion</a></h3></li>
+			</ul>
+			<a name="intro" />
+			<h2>Introduction and Pre-Processing</h2>
+			<p>This page documents my experience trying to mine the mushroom dataset. It explores my first major application of various data mining tools, including Knime, Weka, and MatLab. I attempted to solve the following questions:</p>
+			<ul>
+				<li>Can I generate summary statistics that help describe the data?</li>
+				<li>Can the edible and poisonous data objects be distilled into groups?</li>
+				<li>Can a classification model be created that can predict whether a mushroom is edible or poisonous?</li>
+				<li>Do any anomalies exist in the dataset?</li>
+				<li>Can any association rules be generated from this dataset?</li>
+			</ul>
+			<p>The format of this dataset was not ideal for mining. It consisted of a set of records with 22 attributes and a class label, poisonous or edible. All of the attribute values were nominal. Each field had a set of letters as possible values. For example, the first attribute "cap-shape" could have a value of {b, c, x, f, k, s} which stood for {bell, conical, convex, flat, knobbed, sunken} respectively. Since I was using MatLab to generate my summary statistics, I needed to convert each of these nominal letter values into a numeric value. This would also be necessary for many of the data mining tasks I had ahead of me, so pre-processing the data into this form was my first objective. In order to do this I wrote a ruby script which you can find in the "code" directory. The meat of this code was a function that converted nominal values into decimal ones:</p>
+			<script src="https://gist.github.com/1384621.js?file=gistfile1.rb"></script>
+			<p>This function assigns a value, between 0 and 1, to each nominal value in the set of valid values for a field. It does this by finding how many possible values there are (N), and then arbitrarily assigning each values an index between 1 and N. This index is then divided by N to create a decimal value between 0 and 1. A map is created, mapping each nominal value to it's new decimal value, so the the input file can be iterated through again to create a new file with decimal values instead of nominal ones. My script produced the "mushroom.decimal-data.csv" file in the "data" directory. A key for the nominal to decimal conversion can be found in "data/nominal_to_binary_key.txt", and the original data is in "data/mushroom.data.csv".</p>
+			<a name="stats" />
+			<h2>Summary Statistics</h2>
+			<p>Now that I had decimal data to feed to MatLab, it was time to generate summary statistics. Summary statistics are often displayed in a table, and include measures such as median, mean, and standard deviation of a field. This format, however, becomes cumbersome as the dimensions of your dataset increases. Since this measure is taken for each field, our data set would have 4 or 5 measures times 22 attributes, for a total of 110 different statistics. This is a large number to quickly take in, and defeats the purpose of being able to quickly observe a summary of the data. For this reason, and because I'm new to MatLab and wanted to play with it's visualization features, I decided to display the summary statistics in a box-plot. This provides a much quicker summary, and made it easier for me to get summary statistics by class. When working with a dataset like this, where class labels are provided, this approach allows one to quickly see any stark differences between the attributes of the classes. This may provide an early clue about important attributes to classify or cluster upon. If you see, for instance, that most of the edible mushrooms have values for cap-shape around the conical value, while poisonous tend to have values more around the flat value, then that would be an important attribute to cluster or classify on. Here are the summary statistics I got for edible and poisonous mushrooms:</p>
+			<div class="double-figure span-18">
+				<div class="span-7 append-2">
+					<h3>Edible Mushrooms</h3>
+					<img src="images/edible_stats.png" />
+				</div>
+				<div class="span-7">
+					<h3>Poisonous Mushrooms</h3>
+					<img src="images/poisonous_stats.png" />
+				</div>
+			</div>
+			<p class="clear">The above box-plots have the attributes, in order, where cap-shape is 1 and habitat is 22, from left to right on the X-axis. The Y-axis is the decimal value for that attribute (which I calculated in the pre-processing stage). A box-plot is like looking down on a Gaussian bell curve for each attribute. The blue box is where most of the values lie, and spans from the 25th through 75th percentile of the data. The red line is the median, or 50th percentile, of the data. The black "whiskers" represent data on the edges of the distribution. Finally, the red "+" marks are "outliers" that are outside the standard distribution. Look at field 4, which represents the presence of bruises. There is an easily noticeable difference between the edible and poisonous mushrooms. The edible mushrooms have more distribution between bruises and not, while almost no poisonous mushrooms have bruises. The box-plot allows us to quickly and easily see this difference.</p>
+			<a name="clusters" />
+			<h2>Clusters and Groups</h2>
+			<p>A major purpose of this exercise was to develop a model to determine if a mushroom is edible or poisonous based it's attributes. I noticed a major difference in the bruising, but that's not a definitive enough criteria. In order to create a model, I needed to cluster or classify the data. The latter approach would prove to be much more successful.</p>
+			<p>My initial clustering attempt was to use a K-Means clustering in Knime. I set a K of 2, since there are two groups we are looking for, edible and poisonous. This resulted in a 100% error rate, meaning no mushrooms where grouped accurately. This lead me to think the data might not be globular, and so I needed a different clustering algorithm. I wanted to try DBSCAN, and since I couldn't figure out how to do this (or what it was called) in Knime I switched to WEKA. DBSCAN found 20 "clusters", of which it was able to classify one poisonous and one edible, resulting in only 37% of the data being correctly classified. This means that 5,100 records, or about 63% of the data, were incorrectly clustered. My guess is this data has too many dimensions for clustering to work well. Either that, or the nature of the data is not suited for clustering. Whatever the reason, my clustering results (shown below) were abysmal, proving these data objects cannot easily be distilled into meaningful groups.</p>
+		<h3>DBSCAN Results</h3>
+		<table>
+			<tr>
+				<th>Cluster</th>
+				<th>Records</th>
+				<th>% of Dataset</th>
+				<th>Class label</th>
+			<tr>
+				<td>0</td><td>256</td><td>3%</td><td>None</td>
+				</tr><tr>
+					<td>1</td><td>1000</td><td>12%</td><td>None</td>
+				</tr><tr>
+					<td>2</td><td>768</td><td> 9%</td><td>None</td>
+				</tr><tr>
+					<td>3</td><td>2016</td><td>25%</td><td>Edible</td>
+				</tr><tr>
+					<td>4</td><td>96</td><td>1%</td><td>None</td>
+				</tr><tr>
+					<td>5</td><td>192</td><td>2%</td><td>None</td>
+				</tr><tr>
+					<td>6</td><td>1312</td><td>16%</td><td>Poisonous</td>
+				</tr><tr>
+					<td>7</td><td>96</td><td>1%</td><td>None</td>
+				</tr><tr>
+					<td>8</td><td>864</td><td>11%</td><td>None</td>
+				</tr><tr>
+					<td>9</td><td>48</td><td>1%</td><td>None</td>
+				</tr><tr>
+					<td>10</td><td>48</td><td>1%</td><td>None</td>
+				</tr><tr>
+					<td>11</td><td>864</td><td>11%</td><td>None</td>
+				</tr><tr>
+					<td>12</td><td>32</td><td>0%</td><td>None</td>
+				</tr><tr>
+					<td>13</td><td>8</td><td>0%</td><td>None</td>
+				</tr><tr>
+					<td>14</td><td>192</td><td>2%</td><td>None</td>
+				</tr><tr>
+					<td>15</td><td>144</td><td>2%</td><td>None</td>
+				</tr><tr>
+					<td>16</td><td>144</td><td>2%</td><td>None</td>
+				</tr><tr>
+					<td>17</td><td>18</td><td>0%</td><td>None</td>
+				</tr><tr>
+					<td>18</td><td>18</td><td>0%</td><td>None</td>
+				</tr><tr>
+					<td>19</td><td>8</td><td>0%</td><td>None</td>
+				</tr>
+			</table>
+			<a name="classes" />
+			<h2>Classification</h2>
+			<p>Where clustering failed, classification prospered. Since the data was already loaded into WEKA, a classification was only a tab away (that and Knime kept giving me Java heap errors when I tried to create an ANN). I used an ANN, or as WEKA calls it, a Multilayer Perception. I had 22 input nodes, representing the values for the various attributes. The output layer had two nodes, a and b (see confusion matrix below), where a was 1 if the mushroom was poisonous, and 0 if not, while b was 1 if the mushroom was edible, and 0 if not. The results of this classification were fantastic. Just over 99% of the instances were correctly classified, with only 72 edible mushrooms being incorrectly classified as poisonous. This could be caused by the mushrooms that were classified as poisonous because it was unknown if they were edible. This may have lead to some edible mushrooms being incorrectly labeled as poisons, which would explain the slight error in my classifier. However, irregardless of the reasons, having edible mushrooms misclassified as poisonous is much better than having poisonous mushrooms classified as edible. Thus, this classifier could very well be a safe way to determine which mushrooms I can and can't eat. So, can a classification model be created that can predict whether a mushroom is edible or poisonous? Yes, I believe it can.</p>
+			<h3>Classifier Summary</h3>
+			<table class="classifier-summary">
+				<tr>
+					<td>Correctly Classified Instances</td><td>8052</td><td>99.1137 %</td>
+				</tr><tr>
+					<td>Incorrectly Classified Instances</td><td>72</td><td>0.8863 %</td>
+				</tr><tr>
+					<td>Kappa statistic</td><td>0.9823</td><td />
+				</tr><tr>
+					<td>Mean absolute error</td><td>0.0092</td><td />
+				</tr><tr>
+					<td>Root mean squared error</td><td>0.0941</td><td />
+				</tr><tr>
+					<td>Relative absolute error</td><td>1.8498 %</td><td />
+				</tr><tr>
+					<td>Root relative squared error</td><td>18.8419 %</td><td />
+				</tr><tr>
+					<td>Total Number of Instances</td><td>8124</td><td />
+				</tr>
+			</table>
+			<h3>Detailed Accuracy By Class</h3>
+      <table class="classifier-accuracy">
+      	<tr>
+      		<th />
+      		<th>TP Rate</th>
+      		<th>FP Rate</th>
+      		<th>Precision</th>
+      		<th>Recall</th>
+      		<th>F-Measure</th>
+      		<th>ROC Area</th>
+      		<th>Class</th>
+      	</tr><tr>
+        	<td /><td>1</td><td>0.017</td><td>0.982</td><td>1</td><td>0.991</td><td>0.988</td><td>poisonous</td>
+        </tr><tr>
+        	<td /><td>0.983</td><td>0</td><td>1</td><td>0.983</td><td>0.991</td><td>0.988</td><td>edible</td>
+        </tr><tr>
+					<td>Weighted Avg.</td><td>0.991</td><td>0.008</td><td>0.991</td><td>0.991</td><td>0.991</td><td>0.988</td>
+				</tr>
+			</table>
+			<h3>Confusion Matrix</h3>
+			<table class="classifier-matrix">
+  			<tr>
+  				<th>a</th><th>b</th><td><-- classified as</td>
+					</tr><tr>
+						<td>3916</td><td>0</td><td>a = poisonous</td>
+					</tr><tr>
+ 					<td>72</td><td>4136</td><td>b = edible</td>
+ 				</tr>
+ 			</table>
+			<a name="anomalies" />
+			<h2>Anomaly Detection</h2>
+			<p>I had hoped to play around with MatLab a little for this project, but as you can see from above, I spent most of my time in WEKA. For that reason, I decided to take a statistical approach to finding anomalies so I could use MatLab. I already had the two matrices for edible and poisonous mushrooms loaded up. Thus, all that I needed was to use the built in <code>zscore()</code> function on each matrix, and plot the results. The <code>zscore()</code> function returns a centered, scaled version of the matrix. In other words, it applies the following function to each attribute in a record, and populates a new matrix with the results.</p>
+			<div class="equation">
+			\(z=\frac{x-\mu}{\sigma}\)
+			</div>
+			<p>In the above equation, x is the value to be standardized, mu is the mean for that field, and  sigma is the standard deviation for that field. This results in the standard score, which is a measure of how many standard deviations a data object is above or below the mean of the population. This is a good way to detect anomalies, as they will be outside of 3 or 4 standard deviations. A box-plot is again a good visualization for these results. Since "common" or "acceptable" data points will fall within a few standard deviations of the mean, the "good" data will fall inside the box. Data that is further away than this is outside the expected range, and will therefore be labeled with a red "+" mark, indicating that it is an anomaly.</p>
+			<div class="double-figure span-18">
+				<div class="span-7 append-2">
+					<h3>Edible Mushroom Anomalies</h3>
+					<img src="images/edible_anamolies.png" />
+				</div>
+				<div class="span-7">
+					<h3>Poisonous Mushroom Anomalies</h3>
+					<img src="images/poisonous_anamolies.png" />
+				</div>
+			</div>
+			<p class="clear">The edible mushrooms have a lot of points marked as outliers. However, there's a bunch of them, and since they're all still within 6 standard deviations of the mean, it may not be safe to eliminate them from the dataset. Moreover, their classification of "anomaly" might be up for debate and require a more in-depth analysis. With the poisonous mushrooms, on the other hand, it's a very different story. Look at fields 6 and 17, which represent gill-attachment and gill-spacing respectively. They each have points over 15 standard deviations away! I think it is pretty safe to label those anomalies, and removing those records, or replacing those values with the mean, might yield better results. So, do any anomalies exist in the data? Yes, a few.</p>
+			<a name="association" />
+			<h2>Associations and Rules</h2>
+			<p>The last question to answer was if meaningful associations could be generated from this mushroom data. Was it possible to develop rules one could follow to determine if a mushroom was poisonous or edible? For this task I went back to WEKA, and ran an apriori association. I did not use the decimal data, however. Since the association analysis could handle nominal data, I used the original dataset for this step so that my rules would not have the be translated back into meaningful labels. I was able to generate 10 rules with a confidence of about 98% after 13 iterations. I was not sure how to display the support next to each rule, but the minimum support was 0.35, so I know all the rules were at least above this.</p>
+			<h3>Association Results</h3>
+			<table>
+				<tr>
+					<th>Generated sets of large itemsets:</th><th>Item Count</th>
+				</tr><tr>
+					<td>Size of set of large itemsets L(1):</td><td>17</td>
+				</tr><tr>
+					<td>Size of set of large itemsets L(2):</td><td>52</td>
+				</tr><tr>
+					<td>Size of set of large itemsets L(3):</td><td>69</td>
+				</tr><tr>
+					<td>Size of set of large itemsets L(4):</td><td>43</td>
+				</tr><tr>
+					<td>Size of set of large itemsets L(5):</td><td>12</td>
+				</tr><tr>
+					<td>Size of set of large itemsets L(6):</td><td>1</td>
+				</tr>
+			</table>
+			<ol>
+				<lh>Best rules found:</lh>
+				<li>odor=n ring-number=o 2928 ==> class=e 2880    conf:(0.98)</li>
+				<li>odor=n veil-type=p ring-number=o 2928 ==> class=e 2880    conf:(0.98)</li>
+				<li>odor=n gill-size=b 3288 ==> class=e 3216    conf:(0.98)</li>
+				<li>odor=n gill-size=b veil-type=p 3288 ==> class=e 3216    conf:(0.98)</li>
+				<li>odor=n gill-attachment=f gill-size=b 3096 ==> class=e 3024    conf:(0.98)</li>
+				<li>odor=n gill-size=b veil-color=w 3096 ==> class=e 3024    conf:(0.98)</li>
+				<li>odor=n gill-attachment=f gill-size=b veil-type=p 3096 ==> class=e 3024    conf:(0.98)</li>
+				<li>odor=n gill-attachment=f gill-size=b veil-color=w 3096 ==> class=e 3024    conf:(0.98)</li>
+				<li>odor=n gill-size=b veil-type=p veil-color=w 3096 ==> class=e 3024    conf:(0.98)</li>
+				<li>odor=n gill-attachment=f gill-size=b veil-type=p veil-color=w 3096 ==> class=e 3024    conf:(0.98)</li>	
+			</ol>
+			<a name="conclusion" />
+			<h2>Conclusion</h2>
+			<p>I learned a lot from this process. For one, it was really interesting to see how well classification could work on that same set of data that clustering failed miserably on. Classification is clearly the best method to use on this data. This project was also my first exposure to MatLab. It was great to see how powerful MatLab is. It has a lot of useful, built-in functions and a huge variety of plots to visualize data with. I hope I can become more comfortable with it and use it in my future data mining efforts. This project was also my first stab at a statistics based approach to anomaly detection. This method proved to be very effective, and made it very easy to visualize outliers. Finally, and most importantly, I learned that data mining is fun! I can't wait to talk about mushrooms at the next data mining party :)</p>
+		</div>
+	</body>
+</html>
